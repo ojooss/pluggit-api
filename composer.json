@@ -1,0 +1,16 @@
+{
+  "name": "pluggit-api",
+  "keywords": ["pluggit-api", "pluggit","modbus"],
+  "description": "package to interact with pluggit ventilation unit",
+  "license": "GNU-GPL",
+  "require": {
+    "php": "^7.0",
+    "mightypork/phpmodbus": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8"
+  },
+  "autoload": {
+    "psr-4": {"PluggitApi\\": "src/"}
+  }
+}
