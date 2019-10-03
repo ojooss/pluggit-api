@@ -43,4 +43,27 @@ final class VentilationUnitTest extends TestCase
         $this->assertEquals($expectedRaw, $ventilationUnit->$getterName(), 'Error in '.$getterName);
         $this->assertEquals($expectedFormated, $ventilationUnit->$getterName(true), 'Error in '.$getterName);
     }
+
+    /**
+     * This test ensures that all getter are part of this testcase
+     */
+    public function testCompleteness()
+    {
+        # get all methods
+        $methods = get_class_methods(VentilationUnit::class);
+
+        # get functionname out of dataProvider
+        $provider = $this->provider();
+        $providerGetter = [];
+        foreach ($provider as $item) {
+            $providerGetter[] = $item[0];
+        }
+
+        # whitelist of functions to be ignored
+        $whitelist = ['__construct'];
+
+        # compare
+        $this->assertEquals(array_diff($methods, $providerGetter), $whitelist);
+    }
+
 }

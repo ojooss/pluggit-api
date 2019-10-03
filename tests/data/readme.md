@@ -1,3 +1,4 @@
 generate mock files by adding the following line to ModbusMaster::readMultipleRegisters
 
-file_put_contents(__DIR__.'/../../../../tests/data/'.$reference.'.mock', json_encode($receivedData));
+$mockFile = __DIR__.'/../../../../tests/data/'.$reference.'.mock';
+if (!file_exists($mockFile)) file_put_contents($mockFile, json_encode($receivedData));
