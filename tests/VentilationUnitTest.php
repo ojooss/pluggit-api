@@ -47,10 +47,11 @@ final class VentilationUnitTest extends TestCase
             ['getFanSpeed2', 1564.848876953125, '1565 rpm'],
             ['getFanSpeedLevel', 3, '3'],
             ['getFilterRemainingTime', 80, '80 days'],
-            ['getBypassState', 3.5733110840282835E-43, 'unknown'],
+            ['getBypassState', 255, 'opened'],
             ['getBypassTemperatureMin', 15.0, '15 °C'],
             ['getBypassTemperatureMax', 21.0, '21 °C'],
             ['getBypassManualTimeout', 60, '60 minutes'],
+            ['getCurrentProgram', 1, 'manual'],
         ];
     }
 

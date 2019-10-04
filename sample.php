@@ -15,6 +15,9 @@ echo "Outdoor temperature: ".$ventilationUnit->getOutdoorTemperature(true).' ('.
 echo "Supply temperature: ".$ventilationUnit->getSupplyTemperature(true).' ('.$ventilationUnit->getSupplyTemperature().')'.PHP_EOL;
 echo "Extract temperature: ".$ventilationUnit->getExtractTemperature(true).' ('.$ventilationUnit->getExtractTemperature().')'.PHP_EOL;
 echo "Exhaust temperature: ".$ventilationUnit->getExhaustTemperature(true).' ('.$ventilationUnit->getExhaustTemperature().')'.PHP_EOL;
+
+echo "Actual program: ".$ventilationUnit->getCurrentProgram(true).' ('.$ventilationUnit->getCurrentProgram().')'.PHP_EOL;
+
 echo "Fan-1 speed: ".$ventilationUnit->getFanSpeed1(true).' ('.$ventilationUnit->getFanSpeed1().')'.PHP_EOL;
 echo "Fan-2 speed: ".$ventilationUnit->getFanSpeed2(true).' ('.$ventilationUnit->getFanSpeed2().')'.PHP_EOL;
 echo "Fan speed level: ".$ventilationUnit->getFanSpeedLevel(true).' ('.$ventilationUnit->getFanSpeedLevel().')'.PHP_EOL;

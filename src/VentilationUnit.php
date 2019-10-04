@@ -56,25 +56,7 @@ class VentilationUnit
         $this->register['BypassManualTimeout']   = new Numeric($modbus, '264', '40265', 'prmRamIdxBypassManualTimeout', 'Manual bypass duration in minutes', '%s minutes');
         $this->register['BypassState']           = new BypassState($modbus, '198', '40199', 'prmRamIdxBypassActualState', 'Bypass state');
 
- #       public function getprmCurrentBLState']    = new ProgramState($modbus, '472', '40473', 'prmCurrentBLState', 'Current unit mode');
-        //																0	Standby
-        //																1	Manual
-        //																2	Demand
-        //																3	Week program
-        //																4	Servo-flow
-        //																5	Away
-        //																6	Summer
-        //																7	DI Override
-        //																8	Hygrostat override
-        //																9	Fireplace
-        //																10	Installer
-        //																11	Fail Safe 1
-        //																12	Fail Safe 2
-        //																13	Fail Off
-        //																14	Defrost Off
-        //																15	Defrost
-        //																16	Night
-
+        $this->register['CurrentProgram']        = new ProgramState($modbus, '472', '40473', 'prmCurrentBLState', 'Current unit mode');
 
     }
 
@@ -167,6 +149,11 @@ class VentilationUnit
     }
 
     public function getBypassState($formatted=false)
+    {
+        return $this->getValueByFunction(__FUNCTION__, $formatted);
+    }
+
+    public function getCurrentProgram($formatted=false)
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted);
     }
