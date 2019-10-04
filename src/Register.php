@@ -32,6 +32,11 @@ abstract class Register
     protected $description;
 
     /**
+     * @var string
+     */
+    protected $formatString;
+
+    /**
      * @var mixed
      */
     protected $value;
@@ -43,14 +48,17 @@ abstract class Register
      * @param $address
      * @param $name
      * @param $description
+     * @param $formatString
+     * @throws \Exception
      */
-    public function __construct(ModbusMasterTcp $modbus, $register, $address, $name, $description)
+    public function __construct(ModbusMasterTcp $modbus, $register, $address, $name, $description, $formatString='%s')
     {
         $this->modbus = $modbus;
         $this->register = $register;
         $this->address = $address;
         $this->name = $name;
         $this->description = $description;
+        $this->formatString = Translation::singleton()->translate($formatString);
     }
 
     /**

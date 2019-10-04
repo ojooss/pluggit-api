@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use PluggitApi\Translation;
 use PluggitApi\VentilationUnit;
 
 require_once __DIR__.DIRECTORY_SEPARATOR.'ModbusMasterMock.php';
@@ -10,7 +11,7 @@ class VentilationUnitHelper extends VentilationUnit
 {
     public function __construct($ipAddress)
     {
-        parent::__construct($ipAddress);
+        parent::__construct($ipAddress, 'de');
 
         $modbus = new ModbusMasterMock($ipAddress);
 
@@ -22,14 +23,21 @@ class VentilationUnitHelper extends VentilationUnit
 
 final class VentilationUnitTest extends TestCase
 {
+
+    public static function setUpBeforeClass(): void
+    {
+        // init with test language
+        Translation::singleton('de');
+    }
+
     /**
      * @return array
      */
     public function provider()
     {
         return [
-            ['getCurrentDateTime', 1570052849, '2019-10-02T21:47:29+00:00'],
-            ['getStartExploitationDate', 1506794566, '2017-09-30T18:02:46+00:00'],
+            ['getCurrentDateTime', 1570052849, '02.10.2019 21:47:29'],
+            ['getStartExploitationDate', 1506794566, '30.09.2017 18:02:46'],
             ['getOutdoorTemperature', 17.556928634643555, '18 °C'],
         ];
     }
