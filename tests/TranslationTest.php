@@ -20,7 +20,7 @@ final class TranslationTest extends TestCase
         }
         $content = "<?php ".PHP_EOL.
                    "return [".PHP_EOL.
-                   "   'testcase' => 'Testfall',".PHP_EOL.
+                   "   'testcase' => 'Testcase result',".PHP_EOL.
                    "];".PHP_EOL;
         file_put_contents(self::$testfile, $content);
     }
@@ -40,7 +40,7 @@ final class TranslationTest extends TestCase
      */
     public function testTranslateText():void
     {
-        $this->assertEquals('Testfall', Translation::singleton('test')->translate('testcase'));
+        $this->assertEquals('Testcase result', Translation::singleton('test')->translate('testcase'));
     }
 
     /**

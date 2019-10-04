@@ -1,4 +1,5 @@
-/.idea/
+.idea/
 composer.phar
-/tests/coverage/
-/vendor/
+src/languages/test.php
+tests/coverage/
+vendor/
