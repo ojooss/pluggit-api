@@ -6,18 +6,8 @@ use PHPModbus\PhpType;
 use PluggitApi\Translation;
 
 
-class BypassState extends Floating
+class BypassState extends Numeric
 {
-
-    /**
-     * @return float
-     */
-    protected function readValue()
-    {
-        $registerData = $this->modbus->readMultipleRegisters(0, $this->register, 2);
-        $values = array_slice($registerData, 0, 4);
-        return PhpType::bytes2float($values);
-    }
 
     /**
      * @param $value
