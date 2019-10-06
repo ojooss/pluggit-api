@@ -74,7 +74,7 @@ class Translation
             return $this->dictionary[$key];
         }
         else {
-            file_put_contents($this->langguageFile, "// missing translation:    '".$key."' => '...',".PHP_EOL,FILE_APPEND);
+            file_put_contents($this->langguageFile, "// missing translation:    '".$key."' => '".$key."',".PHP_EOL,FILE_APPEND);
             return $key;
         }
     }
