@@ -25,14 +25,14 @@ class FanSpeedLevel extends Numeric
     {
         //validate
         if ($value   < 0 || $value > 4) {
-            throw new \Exception(Translation::singleton()->translate('invalid-fan-speed-value'));
+            throw new \Exception(Translation::singleton()->translate('fan-speed-invalid-value'));
         }
 
         // and write
         $this->modbus->writeMultipleRegister(0, $this->reference, [$value, 0], ["INT", "INT"]);
 
         // double check
-        $checkValue = $this->readValue();
+        $checkValue = $this->getValue();
         if ($value == $checkValue) {
             $this->value = $value;
         }

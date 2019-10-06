@@ -54,6 +54,7 @@ final class VentilationUnitTest extends TestCase
             ['getUnitMode', 8, 'program'],
             ['getPreheaterDutyCycle', '0', '0 %'],
             ['getCurrentBLState', 1, 'manual'],
+            ['getWeekProgram', 10, '10'],
         ];
     }
 
@@ -88,12 +89,13 @@ final class VentilationUnitTest extends TestCase
         $whitelist[] = 'setUnitMode';
         $whitelist[] = 'setFanSpeedLevel';
         $whitelist[] = 'setFilterDefaultTime';
+        $whitelist[] = 'setWeekProgram';
 
         // little workaround to reset array_keys
         $diff = array_values(array_diff($methods, $providerGetter));
 
         # compare
-        $this->assertEquals($diff, array_values($whitelist));
+        $this->assertEquals($diff, array_values($whitelist), 'Missing test for register::getter');
     }
 
 }

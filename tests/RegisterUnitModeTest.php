@@ -67,4 +67,26 @@ final class RegisterUnitModeTest extends TestCase
         $this->assertEquals($state, $register->getValue(false));
         $this->assertEquals($expected, $register->getValue(true));
     }
+
+    public function testWriteValue()
+    {
+        $modbus = new ModbusMasterMock('127.0.0.1');
+        $register = new RegisterUnitModeHelper($modbus, '472', '40473', 'prmCurrentBLState', 'Current unit mode');
+
+        $valueOk = 64;
+        $register->setValue($valueOk);
+        $register->writeValue($valueOk);
+        $this->assertEquals($valueOk, $register->getValue());
+
+        $valueError = 42;
+        try {
+            $register->setValue($valueError);
+            $register->writeValue($valueError);
+            $this->fail('Exception not thrown');
+        }
+        catch (\Exception $e) {
+            $this->assertStringContainsString('unit-mode-invalid-value', $e->getMessage());
+        }
+    }
+
 }

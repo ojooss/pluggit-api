@@ -10,4 +10,9 @@ class ModbusMasterMock extends ModbusMasterTcp
         return json_decode($json);
     }
 
+    public function writeMultipleRegister($unitId, $reference, $data, $dataTypes)
+    {
+        return true;
+    }
+
 }

@@ -29,6 +29,7 @@ echo "Bypass manual timeout: ".$ventilationUnit->getBypassManualTimeout(true).' 
 echo "Preheater duty cycle: ".$ventilationUnit->getPreheaterDutyCycle(true).' ('.$ventilationUnit->getPreheaterDutyCycle().')'.PHP_EOL;
 echo "Unit mode: ".$ventilationUnit->getUnitMode(true).' ('.$ventilationUnit->getUnitMode().')'.PHP_EOL;
 echo "CurrentBLState: ".$ventilationUnit->getCurrentBLState(true).' ('.$ventilationUnit->getCurrentBLState().')'.PHP_EOL;
+echo "WeekProgram: ".$ventilationUnit->getWeekProgram(true).' ('.$ventilationUnit->getWeekProgram(false).')'.PHP_EOL;
 
 echo PHP_EOL;
 
@@ -48,5 +49,9 @@ echo "Set UnitMode to: ".$ventilationUnit->getUnitMode(true).PHP_EOL;
 $ventilationUnit->setUnitMode($oldValue);
 
 
+$oldValue = $ventilationUnit->getWeekProgram(false);
+$ventilationUnit->setWeekProgram(5);
+echo "Set WeekProgram to: ".$ventilationUnit->getWeekProgram(true).PHP_EOL;
+$ventilationUnit->setWeekProgram($oldValue);
 
 echo PHP_EOL;
