@@ -36,5 +36,13 @@ final class RegisterTest extends TestCase
         $this->assertEquals(42, $register->getValue(false));
         $this->assertEquals("0-8-15", $register->getValue(true));
     }
+
+    public function testWriteAble():void
+    {
+        $modbusMaster = new ModbusMasterMock('127.0.0.1');
+        $register = new RegisterHelper($modbusMaster, '9999', '123', 'Test', 'Test item');
+
+        $this->assertFalse($register->isWriteAble());
+    }
 }
 

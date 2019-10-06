@@ -14,7 +14,7 @@ abstract class Register
     /**
      * @var string
      */
-    protected $register;
+    protected $reference;
 
     /**
      * @var string
@@ -42,19 +42,30 @@ abstract class Register
     protected $value;
 
     /**
+     * @return mixed
+     */
+    abstract protected function readValue();
+
+    /**
+     * @param $value
+     * @return mixed
+     */
+    abstract protected function formatValue($value);
+
+    /**
      * Register constructor.
      * @param ModbusMasterTcp $modbus
-     * @param $register
+     * @param $reference
      * @param $address
      * @param $name
      * @param $description
      * @param $formatString
      * @throws \Exception
      */
-    public function __construct(ModbusMasterTcp $modbus, $register, $address, $name, $description, $formatString='%s')
+    public function __construct(ModbusMasterTcp $modbus, $reference, $address, $name, $description, $formatString='%s')
     {
         $this->modbus = $modbus;
-        $this->register = $register;
+        $this->reference = $reference;
         $this->address = $address;
         $this->name = $name;
         $this->description = $description;
@@ -70,10 +81,6 @@ abstract class Register
         $this->modbus = $modbus;
     }
 
-    /**
-     * @return mixed
-     */
-    abstract protected function readValue();
 
     /**
      * @param bool $formatted
@@ -95,9 +102,12 @@ abstract class Register
     }
 
     /**
-     * @param $value
-     * @return mixed
+     * By default register is readonly
+     *
+     * @return bool
      */
-    abstract protected function formatValue($value);
-
+    public function isWriteAble()
+    {
+        return false;
+    }
 }

@@ -16,7 +16,7 @@ class Floating extends Numeric
     /**
      * Numeric constructor.
      * @param ModbusMasterTcp $modbus
-     * @param $register
+     * @param $reference
      * @param $address
      * @param $name
      * @param $description
@@ -24,9 +24,9 @@ class Floating extends Numeric
      * @param $decimals
      * @throws \Exception
      */
-    public function __construct(ModbusMasterTcp $modbus, $register, $address, $name, $description, $formatString='%s', int $decimals=0)
+    public function __construct(ModbusMasterTcp $modbus, $reference, $address, $name, $description, $formatString='%s', int $decimals=0)
     {
-        parent::__construct($modbus, $register, $address, $name, $description, $formatString);
+        parent::__construct($modbus, $reference, $address, $name, $description, $formatString);
         $this->decimals = $decimals;
     }
 
@@ -35,7 +35,7 @@ class Floating extends Numeric
      */
     protected function readValue()
     {
-        $registerData = $this->modbus->readMultipleRegisters(0, $this->register, 2);
+        $registerData = $this->modbus->readMultipleRegisters(0, $this->reference, 2);
         $values = array_slice($registerData, 0, 4);
         return PhpType::bytes2float($values);
     }

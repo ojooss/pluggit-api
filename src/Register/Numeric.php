@@ -11,16 +11,16 @@ class Numeric extends Register
     /**
      * Numeric constructor.
      * @param ModbusMasterTcp $modbus
-     * @param $register
+     * @param $reference
      * @param $address
      * @param $name
      * @param $description
      * @param $formatString
      * @throws \Exception
      */
-    public function __construct(ModbusMasterTcp $modbus, $register, $address, $name, $description, $formatString='%s')
+    public function __construct(ModbusMasterTcp $modbus, $reference, $address, $name, $description, $formatString='%s')
     {
-        parent::__construct($modbus, $register, $address, $name, $description, $formatString);
+        parent::__construct($modbus, $reference, $address, $name, $description, $formatString);
     }
 
     /**
@@ -28,7 +28,7 @@ class Numeric extends Register
      */
     protected function readValue()
     {
-        $registerData = $this->modbus->readMultipleRegisters(0, $this->register, 2);
+        $registerData = $this->modbus->readMultipleRegisters(0, $this->reference, 2);
         $values = array_slice($registerData, 0, 4);
         return PhpType::bytes2unsignedInt($values);
     }
