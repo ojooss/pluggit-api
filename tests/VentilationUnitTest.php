@@ -46,12 +46,14 @@ final class VentilationUnitTest extends TestCase
             ['getFanSpeed1', 1614.3931884765625, '1614 rpm'],
             ['getFanSpeed2', 1564.848876953125, '1565 rpm'],
             ['getFanSpeedLevel', 3, '3'],
-            ['getFilterRemainingTime', 80, '80 days'],
+            ['getFilterDefaultTime', 90, '90 days'],
             ['getBypassState', 255, 'opened'],
             ['getBypassTemperatureMin', 15.0, '15 °C'],
             ['getBypassTemperatureMax', 21.0, '21 °C'],
             ['getBypassManualTimeout', 60, '60 minutes'],
-            ['getCurrentProgram', 1, 'manual'],
+            ['getUnitMode', 8, 'program'],
+            ['getPreheaterDutyCycle', '0', '0 %'],
+            ['getCurrentBLState', 1, 'manual'],
         ];
     }
 
@@ -81,10 +83,17 @@ final class VentilationUnitTest extends TestCase
         }
 
         # whitelist of functions to be ignored
-        $whitelist = ['__construct'];
+        $whitelist = [];
+        $whitelist[] = '__construct';
+        $whitelist[] = 'setUnitMode';
+        $whitelist[] = 'setFanSpeedLevel';
+        $whitelist[] = 'setFilterDefaultTime';
+
+        // little workaround to reset array_keys
+        $diff = array_values(array_diff($methods, $providerGetter));
 
         # compare
-        $this->assertEquals(array_diff($methods, $providerGetter), $whitelist);
+        $this->assertEquals($diff, array_values($whitelist));
     }
 
 }
