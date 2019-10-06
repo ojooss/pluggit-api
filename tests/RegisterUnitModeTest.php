@@ -38,23 +38,17 @@ final class RegisterUnitModeTest extends TestCase
     public function provider()
     {
         return [
-            [0, 'standby'],
-            [1, 'manual'],
             [2, 'demand'],
-            [3, 'week program'],
-            [4, 'servo flow'],
-            [5, 'away'],
-            [6, 'summer'],
-            [7, 'di override'],
-            [8, 'hygrostat override'],
-            [9, 'fireplace'],
-            [10, 'installer'],
-            [11, 'fail safe 1'],
-            [12, 'fail safe 2'],
-            [13, 'fail off'],
-            [14, 'defrost off'],
-            [15, 'defrost'],
-            [16, 'night'],
+            [4, 'manual'],
+            [8, 'program'],
+            [16, 'away'],
+            [32784, 'away-end'],
+            [64, 'fireplace'],
+            [32832, 'fireplace-end'],
+            [2048, 'summer'],
+            [34816, 'summer-end'],
+            [128, 'bypass-enable'],
+            [32896, 'bypass-disable'],
             [99, 'unknown'],
         ];
     }
