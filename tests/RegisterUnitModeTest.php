@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use PluggitApi\Register\BypassState;
-use PluggitApi\Register\ProgramState;
+use PluggitApi\Register\UnitMode;
 use PluggitApi\Translation;
 
 require_once __DIR__.DIRECTORY_SEPARATOR.'ModbusMasterMock.php';
 
-class RegisterProgramStateHelper extends ProgramState
+class RegisterUnitModeHelper extends UnitMode
 {
     /**
      * @param $value
@@ -20,7 +20,7 @@ class RegisterProgramStateHelper extends ProgramState
 
 }
 
-final class RegisterProgramStateTest extends TestCase
+final class RegisterUnitModeTest extends TestCase
 {
 
     /**
@@ -68,7 +68,7 @@ final class RegisterProgramStateTest extends TestCase
     public function testGetValue($state, $expected): void
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new RegisterProgramStateHelper($modbus, '472', '40473', 'prmCurrentBLState', 'Current unit mode');
+        $register = new RegisterUnitModeHelper($modbus, '472', '40473', 'prmCurrentBLState', 'Current unit mode');
         $register->setValue($state);
         $this->assertEquals($state, $register->getValue(false));
         $this->assertEquals($expected, $register->getValue(true));
