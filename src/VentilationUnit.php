@@ -12,6 +12,7 @@ use PluggitApi\Register\FilterDefaultTime;
 use PluggitApi\Register\Floating;
 use PluggitApi\Register\Numeric;
 use PluggitApi\Register\UnitMode;
+use PluggitApi\Register\WeekProgram;
 
 class VentilationUnit
 {
@@ -54,6 +55,7 @@ class VentilationUnit
         $this->register['PreheaterDutyCycle'] = new Numeric($modbus, '160', '40161', 'prmPreheaterDutyCycle', 'Power of Preheater in %', '%s %%');
         $this->register['CurrentBLState'] = new CurrentBLState($modbus, '472', '40473', 'prmCurrentBLState', 'Current unit mode');
         $this->register['UnitMode'] = new UnitMode($modbus, '168', '40169', 'prmRamIdxUnitMode', 'Active Unit mode');
+        $this->register['WeekProgram'] = new WeekProgram($modbus, (40467-40001), '40467', 'prmNumOfWeekProgram', 'Number of the Active Week Program (for Week Program mode)');
     }
 
     /**
@@ -161,6 +163,10 @@ class VentilationUnit
         return $this->getValueByFunction(__FUNCTION__, $formatted);
     }
 
+    public function getWeekProgram($formatted = false)
+    {
+        return $this->getValueByFunction(__FUNCTION__, $formatted);
+    }
 
     /************************* SETTER SECTION *************************/
 
@@ -182,6 +188,13 @@ class VentilationUnit
     {
         /** @var FilterDefaultTime $register */
         $register = $this->register['FilterDefaultTime'];
+        $register->writeValue($value);
+    }
+
+    public function setWeekProgram($value)
+    {
+        /** @var WeekProgram $register */
+        $register = $this->register['WeekProgram'];
         $register->writeValue($value);
     }
 
