@@ -13,7 +13,7 @@ class DateTime extends Register
      */
     protected function readValue()
     {
-        $registerData = $this->modbus->readMultipleRegisters(0, $this->register, 20);
+        $registerData = $this->modbus->readMultipleRegisters(0, $this->reference, 20);
         $values = array_slice($registerData, 0, 4);
         return PhpType::bytes2unsignedInt($values);
     }
