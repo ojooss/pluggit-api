@@ -25,7 +25,7 @@ class FilterDefaultTime extends Numeric
     {
         //validate
         if ($value < 0 || $value > 90) {
-            throw new \Exception(Translation::singleton()->translate('invalid-filter-time-value'));
+            throw new \Exception(Translation::singleton()->translate('filter-time-invalid-value'));
         }
         // and write
         $this->modbus->writeMultipleRegister(0, $this->reference, [$value, 0], ["INT", "INT"]);

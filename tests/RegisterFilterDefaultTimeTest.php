@@ -54,7 +54,7 @@ final class RegisterFilterDefaultTimeTest extends TestCase
             $this->fail('Exception not thrown');
         }
         catch (\Exception $e) {
-            $this->assertStringContainsString('invalid-filter-time-value', $e->getMessage());
+            $this->assertStringContainsString('filter-time-invalid-value', $e->getMessage());
         }
     }
 

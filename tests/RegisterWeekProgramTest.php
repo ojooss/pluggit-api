@@ -54,7 +54,7 @@ final class RegisterWeekProgramTest extends TestCase
             $this->fail('Exception not thrown');
         }
         catch (\Exception $e) {
-            $this->assertStringContainsString('invalid-week-program-value', $e->getMessage());
+            $this->assertStringContainsString('week-program-invalid-value', $e->getMessage());
         }
     }
 

@@ -46,4 +46,7 @@ return [
     'unit-mode-bypass-enable'=> 'Beipass an',
     'unit-mode-bypass-disable'=> 'Beipass aus',
     'unit-mode-unknown'=> 'unbekannt',
+    'fan-speed-invalid-value' => 'fan-speed-invalid-value',
+    'filter-time-invalid-value' => 'filter-time-invalid-value',
+    'week-program-invalid-value' => 'week-program-invalid-value',
 ];
