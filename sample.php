@@ -48,7 +48,6 @@ $ventilationUnit->setUnitMode(16);
 echo "Set UnitMode to: ".$ventilationUnit->getUnitMode(true).PHP_EOL;
 $ventilationUnit->setUnitMode($oldValue);
 
-
 $oldValue = $ventilationUnit->getWeekProgram(false);
 $ventilationUnit->setWeekProgram(5);
 echo "Set WeekProgram to: ".$ventilationUnit->getWeekProgram(true).PHP_EOL;

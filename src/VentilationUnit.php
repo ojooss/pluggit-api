@@ -25,6 +25,7 @@ class VentilationUnit
     /**
      * VentilationUnit constructor.
      * @param $ipAddress
+     * @param $lang
      * @throws \Exception
      */
     public function __construct($ipAddress, $lang)
@@ -61,115 +62,216 @@ class VentilationUnit
     /**
      * @param string $function
      * @param bool $formatted
+     * @param bool $force
      * @return mixed
      */
-    protected function getValueByFunction($function, $formatted = false)
+    protected function getValueByFunction($function, $formatted = false, $force=false)
     {
         $index = str_replace('get', '', $function);
-        return $this->register[$index]->getValue($formatted);
+        return $this->register[$index]->getValue($formatted, $force);
     }
 
 
-    /************************* GETTER SECTION *************************/
+    /************************* GETTER SECTION ************************/
 
-    public function getCurrentDateTime($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getCurrentDateTime($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getStartExploitationDate($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getStartExploitationDate($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getWorkTime($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getWorkTime($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getOutdoorTemperature($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getOutdoorTemperature($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-
-    public function getSupplyTemperature($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getSupplyTemperature($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getExtractTemperature($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getExtractTemperature($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getExhaustTemperature($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getExhaustTemperature($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getFanSpeed1($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getFanSpeed1($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getFanSpeed2($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getFanSpeed2($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getFanSpeedLevel($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getFanSpeedLevel($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getFilterDefaultTime($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getFilterDefaultTime($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getBypassTemperatureMin($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getBypassTemperatureMin($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getBypassTemperatureMax($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getBypassTemperatureMax($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getBypassManualTimeout($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getBypassManualTimeout($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getBypassState($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getBypassState($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getUnitMode($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getUnitMode($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getPreheaterDutyCycle($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getPreheaterDutyCycle($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getCurrentBLState($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getCurrentBLState($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
 
-    public function getWeekProgram($formatted = false)
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
+    public function getWeekProgram($formatted = false, $force=false)
     {
-        return $this->getValueByFunction(__FUNCTION__, $formatted);
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
+
 
     /************************* SETTER SECTION *************************/
 
+    /**
+     * @param $value
+     * @return mixed
+     * @throws \Exception
+     */
     public function setUnitMode($value)
     {
         /** @var UnitMode $register */
@@ -177,6 +279,11 @@ class VentilationUnit
         $register->writeValue($value);
     }
 
+    /**
+     * @param $value
+     * @return mixed
+     * @throws \Exception
+     */
     public function setFanSpeedLevel($value)
     {
         /** @var FanSpeedLevel $register */
@@ -184,6 +291,11 @@ class VentilationUnit
         $register->writeValue($value);
     }
 
+    /**
+     * @param $value
+     * @return mixed
+     * @throws \Exception
+     */
     public function setFilterDefaultTime($value)
     {
         /** @var FilterDefaultTime $register */
@@ -191,6 +303,11 @@ class VentilationUnit
         $register->writeValue($value);
     }
 
+    /**
+     * @param $value
+     * @return mixed
+     * @throws \Exception
+     */
     public function setWeekProgram($value)
     {
         /** @var WeekProgram $register */
