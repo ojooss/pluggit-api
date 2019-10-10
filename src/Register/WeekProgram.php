@@ -24,7 +24,7 @@ class WeekProgram extends Numeric
     public function writeValue($value)
     {
         //validate
-        if ($value   < 1 || $value > 11) {
+        if ($value   < 0 || $value > 10) {
             throw new \Exception(Translation::singleton()->translate('week-program-invalid-value'));
         }
 
