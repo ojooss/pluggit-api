@@ -70,7 +70,7 @@ class UnitMode extends Numeric
         $this->modbus->writeMultipleRegister(0, $this->reference, [$value, 0], ["INT", "INT"]);
 
         // double check
-        $checkValue = $this->getValue();
+        $checkValue = $this->readValue();
         if ($value == $checkValue) {
             $this->value = $value;
         }
