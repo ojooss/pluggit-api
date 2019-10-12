@@ -36,7 +36,6 @@ final class RegisterWeekProgramTest extends TestCase
 
         try {
             $valueError = 15;
-            $register->setValue($valueError);
             $register->writeValue($valueError);
             $this->fail('Exception not thrown');
         }

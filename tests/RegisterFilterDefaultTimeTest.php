@@ -36,7 +36,6 @@ final class RegisterFilterDefaultTimeTest extends TestCase
 
         try {
             $valueError = 100;
-            $register->setValue($valueError);
             $register->writeValue($valueError);
             $this->fail('Exception not thrown');
         }
