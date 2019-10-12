@@ -7,17 +7,6 @@ use PluggitApi\Translation;
 
 require_once __DIR__.DIRECTORY_SEPARATOR.'ModbusMasterMock.php';
 
-class RegisterFanSpeedLevelHelper extends FanSpeedLevel
-{
-    /**
-     * @param $value
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-    }
-
-}
 
 final class RegisterFanSpeedLevelTest extends TestCase
 {
@@ -40,16 +29,14 @@ final class RegisterFanSpeedLevelTest extends TestCase
     public function testWriteValue()
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new RegisterFanSpeedLevelHelper($modbus, '324', '40325', 'prmRomIdxSpeedLevel', 'Speed level of Fans', '%s');
+        $register = new FanSpeedLevel($modbus, '324', '40325', 'prmRomIdxSpeedLevel', 'Speed level of Fans', '%s');
 
-        $valueOk = 4;
-        $register->setValue($valueOk);
+        $valueOk = 3;
         $register->writeValue($valueOk);
         $this->assertEquals($valueOk, $register->getValue());
 
         try {
             $valueError = 5;
-            $register->setValue($valueError);
             $register->writeValue($valueError);
             $this->fail('Exception not thrown');
         }

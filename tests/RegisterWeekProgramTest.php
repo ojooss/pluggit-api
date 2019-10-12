@@ -7,18 +7,6 @@ use PluggitApi\Translation;
 
 require_once __DIR__.DIRECTORY_SEPARATOR.'ModbusMasterMock.php';
 
-class RegisterWeekProgramHelper extends WeekProgram
-{
-    /**
-     * @param $value
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-    }
-
-}
-
 final class RegisterWeekProgramTest extends TestCase
 {
 
@@ -40,10 +28,9 @@ final class RegisterWeekProgramTest extends TestCase
     public function testWriteValue()
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new RegisterWeekProgramHelper($modbus, '324', '40325', 'prmRomIdxSpeedLevel', 'Speed level of Fans', '%s');
+        $register = new WeekProgram($modbus, (40467-40001), '40467', 'prmNumOfWeekProgram', 'Number of the Active Week Program (for Week Program mode)');
 
-        $valueOk = 4;
-        $register->setValue($valueOk);
+        $valueOk = 10;
         $register->writeValue($valueOk);
         $this->assertEquals($valueOk, $register->getValue());
 
