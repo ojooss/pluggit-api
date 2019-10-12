@@ -13,7 +13,7 @@ final class RegisterDateTimeTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         // init with test language
-        Translation::singleton('de');
+        Translation::singleton('en');
     }
 
     public function testGetValue(): void

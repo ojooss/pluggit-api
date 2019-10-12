@@ -64,7 +64,7 @@ class UnitMode extends Numeric
                 // -> value is OK
                 break;
             default:
-                throw new \Exception('unit-mode-invalid-value');
+                throw new \Exception(sprintf(Translation::singleton()->translate('unit-mode-invalid-value'), $value));
         }
 
         $this->modbus->writeMultipleRegister(0, $this->reference, [$value, 0], ["INT", "INT"]);
@@ -75,7 +75,7 @@ class UnitMode extends Numeric
             $this->value = $value;
         }
         else {
-            throw new \Exception(Translation::singleton()->translate('failed-set-unit-mode-value'));
+            throw new \Exception(sprintf(Translation::singleton()->translate('unit-mode-failed-set-value'), $value, $checkValue));
         }
     }
 

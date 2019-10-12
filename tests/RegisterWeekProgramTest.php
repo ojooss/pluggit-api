@@ -25,7 +25,7 @@ final class RegisterWeekProgramTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         // init with test language
-        Translation::singleton('de');
+        Translation::singleton('en');
     }
 
     public function testGetValue(): void
@@ -54,7 +54,7 @@ final class RegisterWeekProgramTest extends TestCase
             $this->fail('Exception not thrown');
         }
         catch (\Exception $e) {
-            $this->assertStringContainsString('week-program-invalid-value', $e->getMessage());
+            $this->assertStringContainsString('invalid value for week program', $e->getMessage());
         }
     }
 

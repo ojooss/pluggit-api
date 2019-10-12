@@ -85,7 +85,7 @@ final class RegisterUnitModeTest extends TestCase
             $this->fail('Exception not thrown');
         }
         catch (\Exception $e) {
-            $this->assertStringContainsString('unit-mode-invalid-value', $e->getMessage());
+            $this->assertStringContainsString('invalid value for unit mode', $e->getMessage());
         }
     }
 
