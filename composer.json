@@ -3,6 +3,7 @@
   "keywords": ["pluggit-api", "pluggit","modbus"],
   "description": "package to interact with pluggit ventilation unit",
   "license": "GNU-GPL",
+  "type": "library",
   "require": {
     "php": "^7.0",
     "mightypork/phpmodbus": "*"
