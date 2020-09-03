@@ -21,7 +21,7 @@ echo "Fan-1 speed: ".$ventilationUnit->getFanSpeed1(true).' ('.$ventilationUnit-
 echo "Fan-2 speed: ".$ventilationUnit->getFanSpeed2(true).' ('.$ventilationUnit->getFanSpeed2().')'.PHP_EOL;
 echo "Fan speed level: ".$ventilationUnit->getFanSpeedLevel(true).' ('.$ventilationUnit->getFanSpeedLevel().')'.PHP_EOL;
 echo "Filter default time: ".$ventilationUnit->getFilterDefaultTime(true),' ('.$ventilationUnit->getFilterDefaultTime().')'.PHP_EOL;
-echo "Filter remaining time: ".$ventilationUnit->getFilterDefaultTime(true).' ('.$ventilationUnit->getFilterDefaultTime().')'.PHP_EOL;
+echo "Filter remaining time: ".$ventilationUnit->getFilterRemainingTime(true).' ('.$ventilationUnit->getFilterRemainingTime().')'.PHP_EOL;
 echo "Bypass state: ".$ventilationUnit->getBypassState(true).' ('.$ventilationUnit->getBypassState().')'.PHP_EOL;
 echo "Bypass temperature min: ".$ventilationUnit->getBypassTemperatureMin(true).' ('.$ventilationUnit->getBypassTemperatureMin().')'.PHP_EOL;
 echo "Bypass temperature max: ".$ventilationUnit->getBypassTemperatureMax(true).' ('.$ventilationUnit->getBypassTemperatureMax().')'.PHP_EOL;

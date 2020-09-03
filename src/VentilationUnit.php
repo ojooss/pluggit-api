@@ -189,6 +189,16 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
+    public function getFilterRemainingTime($formatted = false, $force=false)
+    {
+        return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
+    }
+
+    /**
+     * @param bool $formatted
+     * @param bool $force
+     * @return mixed
+     */
     public function getBypassTemperatureMin($formatted = false, $force=false)
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
