@@ -2,7 +2,7 @@
 
 require_once __DIR__.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 
-$ipAddress = '192.168.21.5';
+$ipAddress = '192.168.x.x';
 
 $ventilationUnit = new \PluggitApi\VentilationUnit($ipAddress, 'de');
 

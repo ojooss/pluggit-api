@@ -1,5 +1,5 @@
 {
-  "name": "pluggit-api",
+  "name": "ojooss/pluggit-api",
   "keywords": ["pluggit-api", "pluggit","modbus"],
   "description": "package to interact with pluggit ventilation unit",
   "license": "GNU-GPL",
