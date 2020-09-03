@@ -2,7 +2,7 @@
   "name": "ojooss/pluggit-api",
   "keywords": ["pluggit-api", "pluggit","modbus"],
   "description": "package to interact with pluggit ventilation unit",
-  "license": "GNU-GPL",
+  "license": "MIT",
   "type": "library",
   "require": {
     "php": "^7.0",
