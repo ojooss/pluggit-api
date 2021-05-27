@@ -2,6 +2,7 @@
 
 namespace PluggitApi\Register;
 
+use Exception;
 use PluggitApi\Translation;
 
 class FilterDefaultTime extends Numeric
@@ -12,14 +13,14 @@ class FilterDefaultTime extends Numeric
      *
      * @return bool
      */
-    public function isWriteAble()
+    public function isWriteAble(): bool
     {
         return true;
     }
 
     /**
      * @param $value
-     * @throws \Exception
+     * @throws Exception
      */
     public function writeValue($value)
     {
@@ -36,7 +37,7 @@ class FilterDefaultTime extends Numeric
             $this->value = $value;
         }
         else {
-            throw new \Exception(sprintf(Translation::singleton()->translate('filter-time-failed-set-value'), $value, $checkValue));
+            throw new Exception(sprintf(Translation::singleton()->translate('filter-time-failed-set-value'), $value, $checkValue));
         }
     }
 

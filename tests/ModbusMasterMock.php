@@ -19,7 +19,7 @@ class ModbusMasterMock extends ModbusMasterTcp
             return json_decode($json);
         }
         else {
-            throw new \Exception('No mock data available for ' . $reference);
+            throw new Exception('No mock data available for ' . $reference);
         }
     }
 
@@ -30,7 +30,7 @@ class ModbusMasterMock extends ModbusMasterTcp
      * @param array $dataTypes
      * @return bool
      */
-    public function writeMultipleRegister($unitId, $reference, $data, $dataTypes)
+    public function writeMultipleRegister($unitId, $reference, $data, $dataTypes): bool
     {
         return true;
     }

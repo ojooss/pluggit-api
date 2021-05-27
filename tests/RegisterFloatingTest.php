@@ -10,6 +10,9 @@ require_once __DIR__.DIRECTORY_SEPARATOR.'ModbusMasterMock.php';
 final class RegisterFloatingTest extends TestCase
 {
 
+    /**
+     * @throws Exception
+     */
     public static function setUpBeforeClass(): void
     {
         // init with test language
@@ -17,6 +20,9 @@ final class RegisterFloatingTest extends TestCase
     }
 
 
+    /**
+     * @throws Exception
+     */
     public function testGetValue(): void
     {
         $modbus = new ModbusMasterMock('127.0.0.1');

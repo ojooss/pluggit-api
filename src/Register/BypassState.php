@@ -2,7 +2,7 @@
 
 namespace PluggitApi\Register;
 
-use PHPModbus\PhpType;
+use Exception;
 use PluggitApi\Translation;
 
 
@@ -12,9 +12,9 @@ class BypassState extends Numeric
     /**
      * @param $value
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
-    protected function formatValue($value)
+    protected function formatValue($value): string
     {
         switch($value) {
             case 0:

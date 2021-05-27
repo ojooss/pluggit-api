@@ -2,6 +2,7 @@
 
 namespace PluggitApi;
 
+use Exception;
 use PHPModbus\ModbusMasterTcp;
 
 abstract class Register
@@ -55,14 +56,14 @@ abstract class Register
     /**
      * Register constructor.
      * @param ModbusMasterTcp $modbus
-     * @param $reference
-     * @param $address
-     * @param $name
-     * @param $description
-     * @param $formatString
-     * @throws \Exception
+     * @param int $reference
+     * @param int $address
+     * @param string $name
+     * @param string $description
+     * @param string $formatString
+     * @throws Exception
      */
-    public function __construct(ModbusMasterTcp $modbus, $reference, $address, $name, $description, $formatString='%s')
+    public function __construct(ModbusMasterTcp $modbus, int $reference, int $address, string $name, string $description, string $formatString='%s')
     {
         $this->modbus = $modbus;
         $this->reference = $reference;
@@ -87,7 +88,7 @@ abstract class Register
      * @param bool $force
      * @return mixed
      */
-    public function getValue($formatted=false, $force=false)
+    public function getValue(bool $formatted=false, bool $force=false)
     {
         if (null === $this->value || $force) {
             $this->value = $this->readValue();
@@ -106,7 +107,7 @@ abstract class Register
      *
      * @return bool
      */
-    public function isWriteAble()
+    public function isWriteAble(): bool
     {
         return false;
     }

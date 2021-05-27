@@ -2,6 +2,7 @@
 
 namespace PluggitApi\Register;
 
+use Exception;
 use PluggitApi\Translation;
 
 class CurrentBLState extends Numeric
@@ -10,9 +11,9 @@ class CurrentBLState extends Numeric
     /**
      * @param $value
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
-    protected function formatValue($value)
+    protected function formatValue($value): string
     {
         switch($value) {
             case 0	: return Translation::singleton()->translate('current-bl-state-standby');

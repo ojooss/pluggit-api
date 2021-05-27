@@ -2,6 +2,7 @@
 
 namespace PluggitApi\Register;
 
+use Exception;
 use PHPModbus\ModbusMasterTcp;
 use PHPModbus\PhpType;
 use PluggitApi\Register;
@@ -26,7 +27,7 @@ class Numeric extends Register
     /**
      * @return float
      */
-    protected function readValue()
+    protected function readValue(): float
     {
         $registerData = $this->modbus->readMultipleRegisters(0, $this->reference, 2);
         $values = array_slice($registerData, 0, 4);
@@ -37,7 +38,7 @@ class Numeric extends Register
      * @param $value
      * @return string
      */
-    protected function formatValue($value)
+    protected function formatValue($value): string
     {
         return sprintf($this->formatString, $value);
     }

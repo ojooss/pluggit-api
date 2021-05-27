@@ -8,18 +8,18 @@ require_once __DIR__.DIRECTORY_SEPARATOR.'ModbusMasterMock.php';
 class RegisterHelper extends Register
 {
     /**
-     * @return mixed
+     * @return int
      */
-    protected function readValue()
+    protected function readValue(): int
     {
         return 42;
     }
 
     /**
      * @param $value
-     * @return mixed
+     * @return string
      */
-    protected function formatValue($value)
+    protected function formatValue($value): string
     {
         return "0-8-15";
     }
@@ -28,6 +28,9 @@ class RegisterHelper extends Register
 
 final class RegisterTest extends TestCase
 {
+    /**
+     * @throws Exception
+     */
     public function testGetValue(): void
     {
         $modbusMaster = new ModbusMasterMock('127.0.0.1');
@@ -37,6 +40,9 @@ final class RegisterTest extends TestCase
         $this->assertEquals("0-8-15", $register->getValue(true));
     }
 
+    /**
+     * @throws Exception
+     */
     public function testWriteAble():void
     {
         $modbusMaster = new ModbusMasterMock('127.0.0.1');

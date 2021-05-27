@@ -11,7 +11,7 @@ class DateTime extends Register
     /**
      * @return int
      */
-    protected function readValue()
+    protected function readValue(): int
     {
         $registerData = $this->modbus->readMultipleRegisters(0, $this->reference, 20);
         $values = array_slice($registerData, 0, 4);
@@ -22,7 +22,7 @@ class DateTime extends Register
      * @param $value
      * @return string
      */
-    protected function formatValue($value)
+    protected function formatValue($value): string
     {
         $dateTime = \DateTime::createFromFormat('U', $value);
         return $dateTime->format($this->formatString);

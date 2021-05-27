@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use PluggitApi\Register\BypassState;
 use PluggitApi\Register\UnitMode;
 use PluggitApi\Translation;
 
@@ -35,7 +34,7 @@ final class RegisterUnitModeTest extends TestCase
     /**
      * @return array
      */
-    public function provider()
+    public function provider(): array
     {
         return [
             [2, 'demand'],
@@ -68,6 +67,9 @@ final class RegisterUnitModeTest extends TestCase
         $this->assertEquals($expected, $register->getValue(true));
     }
 
+    /**
+     * @throws Exception
+     */
     public function testWriteValue()
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
@@ -82,7 +84,7 @@ final class RegisterUnitModeTest extends TestCase
             $register->writeValue($valueError);
             $this->fail('Exception not thrown');
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $this->assertStringContainsString('invalid value for unit mode', $e->getMessage());
         }
     }

@@ -8,6 +8,8 @@
 
 namespace PluggitApi;
 
+use Exception;
+
 class Translation
 {
 
@@ -33,9 +35,9 @@ class Translation
     /**
      * Translation constructor.
      * @param string $lang
-     * @throws \Exception
+     * @throws Exception
      */
-    private function __construct($lang='en')
+    private function __construct(string $lang='en')
     {
         $this->langguageFile = __DIR__.DIRECTORY_SEPARATOR.'languages'.DIRECTORY_SEPARATOR.$lang.'.php';
         if (!file_exists($this->langguageFile)) {
@@ -45,11 +47,11 @@ class Translation
     }
 
     /**
-     * @param $lang
+     * @param string $lang
      * @return Translation
-     * @throws \Exception
+     * @throws Exception
      */
-    public static function singleton($lang='')
+    public static function singleton(string $lang=''): Translation
     {
         // return existing instance
         if (null !== self::$instance) {
@@ -58,7 +60,7 @@ class Translation
 
         // generat enew instance and return
         if (empty($lang)) {
-            throw new \Exception('Call '.__METHOD__.' with language parameter at first time');
+            throw new Exception('Call '.__METHOD__.' with language parameter at first time');
         }
 
         self::$instance = new self(strtolower($lang));

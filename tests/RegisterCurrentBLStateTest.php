@@ -34,7 +34,7 @@ final class RegisterCurrentBLStateTest extends TestCase
     /**
      * @return array
      */
-    public function provider()
+    public function provider(): array
     {
         return [
             [0, 'standby'],

@@ -2,6 +2,7 @@
 
 namespace PluggitApi\Register;
 
+use Exception;
 use PluggitApi\Translation;
 
 class UnitMode extends Numeric
@@ -10,9 +11,9 @@ class UnitMode extends Numeric
     /**
      * @param $value
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
-    protected function formatValue($value)
+    protected function formatValue($value): string
     {
         switch ($value) {
             case 2: return Translation::singleton()->translate('unit-mode-demand');
@@ -37,14 +38,14 @@ class UnitMode extends Numeric
      *
      * @return bool
      */
-    public function isWriteAble()
+    public function isWriteAble(): bool
     {
         return true;
     }
 
     /**
      * @param $value
-     * @throws \Exception
+     * @throws Exception
      */
     public function writeValue($value)
     {
@@ -64,7 +65,7 @@ class UnitMode extends Numeric
                 // -> value is OK
                 break;
             default:
-                throw new \Exception(sprintf(Translation::singleton()->translate('unit-mode-invalid-value'), $value));
+                throw new Exception(sprintf(Translation::singleton()->translate('unit-mode-invalid-value'), $value));
         }
 
         $this->modbus->writeMultipleRegister(0, $this->reference, [$value, 0], ["INT", "INT"]);
@@ -75,7 +76,7 @@ class UnitMode extends Numeric
             $this->value = $value;
         }
         else {
-            throw new \Exception(sprintf(Translation::singleton()->translate('unit-mode-failed-set-value'), $value, $checkValue));
+            throw new Exception(sprintf(Translation::singleton()->translate('unit-mode-failed-set-value'), $value, $checkValue));
         }
     }
 

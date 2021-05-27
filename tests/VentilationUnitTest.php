@@ -24,6 +24,9 @@ class VentilationUnitHelper extends VentilationUnit
 final class VentilationUnitTest extends TestCase
 {
 
+    /**
+     * @throws Exception
+     */
     public static function setUpBeforeClass(): void
     {
         // init with test language
@@ -33,7 +36,7 @@ final class VentilationUnitTest extends TestCase
     /**
      * @return array
      */
-    public function provider()
+    public function provider(): array
     {
         return [
             ['getCurrentDateTime', 1570052849, '10/02/2019 21:47:29'],

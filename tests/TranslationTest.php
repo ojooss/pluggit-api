@@ -63,7 +63,7 @@ final class TranslationTest extends TestCase
             Translation::singleton();
             $this->fail('Exception is missing');
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $this->assertStringContainsString('language parameter at first time', $e->getMessage());
         }
 

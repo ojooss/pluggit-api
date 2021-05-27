@@ -34,7 +34,7 @@ final class RegisterBypassStateTest extends TestCase
     /**
      * @return array
      */
-    public function provider()
+    public function provider(): array
     {
         return [
             [0, 'closed'],

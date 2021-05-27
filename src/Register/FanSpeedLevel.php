@@ -2,6 +2,7 @@
 
 namespace PluggitApi\Register;
 
+use Exception;
 use PluggitApi\Translation;
 
 class FanSpeedLevel extends Numeric
@@ -12,20 +13,20 @@ class FanSpeedLevel extends Numeric
      *
      * @return bool
      */
-    public function isWriteAble()
+    public function isWriteAble(): bool
     {
         return true;
     }
 
     /**
      * @param $value
-     * @throws \Exception
+     * @throws Exception
      */
     public function writeValue($value)
     {
         //validate
         if ($value   < 0 || $value > 4) {
-            throw new \Exception(sprintf(Translation::singleton()->translate('fan-speed-invalid-value'), $value));
+            throw new Exception(sprintf(Translation::singleton()->translate('fan-speed-invalid-value'), $value));
         }
 
         // and write
@@ -37,7 +38,7 @@ class FanSpeedLevel extends Numeric
             $this->value = $value;
         }
         else {
-            throw new \Exception(sprintf(Translation::singleton()->translate('fan-speed-failed-set-value'), $value, $checkValue));
+            throw new Exception(sprintf(Translation::singleton()->translate('fan-speed-failed-set-value'), $value, $checkValue));
         }
     }
 
