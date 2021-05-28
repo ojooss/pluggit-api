@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+
+  test:
+    build:
+      context: .
+    image: pluggit-api:local
+    volumes:
+      - .:/app
+    command: bash -c "composer install  &&  cd tests  &&  bash run.sh"
+
+  sample:
+    image: pluggit-api:local
+    environment:
+      PLUGGIT_IP: "${PLUGGIT_IP}"
+    volumes:
+      - .:/app
+    command: bash -c "composer install  &&  php sample.php"
+
+  dev:
+    image: pluggit-api:local
+    environment:
+      PLUGGIT_IP: "${PLUGGIT_IP}"
+    volumes:
+      - .:/app
+    # run interactive bash shell
+    command: bash
+    tty: true
+    stdin_open: true
