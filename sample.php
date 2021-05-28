@@ -1,10 +1,17 @@
 <?php
 
+use PluggitApi\VentilationUnit;
+
 require_once __DIR__.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 
-$ipAddress = '192.168.x.x';
+$ipAddress = getenv('PLUGGIT_IP');
+if (empty($ipAddress)) $ipAddress = '192.168.x.x';
 
-$ventilationUnit = new \PluggitApi\VentilationUnit($ipAddress, 'de');
+try {
+    $ventilationUnit = new VentilationUnit($ipAddress, 'de');
+} catch (Exception $e) {
+    die($e->getMessage());
+}
 
 echo PHP_EOL;
 echo "--- PluggitApi ---".PHP_EOL;
