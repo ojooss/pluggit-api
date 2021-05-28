@@ -30,7 +30,7 @@ class Translation
      *
      * @var string
      */
-    private $langguageFile;
+    private $languageFile;
 
     /**
      * Translation constructor.
@@ -39,11 +39,12 @@ class Translation
      */
     private function __construct(string $lang='en')
     {
-        $this->langguageFile = __DIR__.DIRECTORY_SEPARATOR.'languages'.DIRECTORY_SEPARATOR.$lang.'.php';
-        if (!file_exists($this->langguageFile)) {
-            throw new \Exception('No languages file found for: ' . $lang);
+        $this->languageFile = __DIR__.DIRECTORY_SEPARATOR.'languages'.DIRECTORY_SEPARATOR.$lang.'.php';
+        if (!file_exists($this->languageFile)) {
+            throw new Exception('No languages file found for: ' . $lang);
         }
-        $this->dictionary = require_once($this->langguageFile);
+        /** @noinspection PhpIncludeInspection */
+        $this->dictionary = require_once($this->languageFile);
     }
 
     /**
@@ -58,7 +59,7 @@ class Translation
             return self::$instance;
         }
 
-        // generat enew instance and return
+        // generate new instance and return
         if (empty($lang)) {
             throw new Exception('Call '.__METHOD__.' with language parameter at first time');
         }
@@ -76,7 +77,7 @@ class Translation
             return $this->dictionary[$key];
         }
         else {
-            file_put_contents($this->langguageFile, "// missing translation:    '".$key."' => '".$key."',".PHP_EOL,FILE_APPEND);
+            file_put_contents($this->languageFile, "// missing translation:    '".$key."' => '".$key."',".PHP_EOL,FILE_APPEND);
             return $key;
         }
     }
