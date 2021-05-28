@@ -26,7 +26,7 @@ final class RegisterFanSpeedLevelTest extends TestCase
     public function testGetValue(): void
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new FanSpeedLevel($modbus, '324', '40325', 'prmRomIdxSpeedLevel', 'Speed level of Fans', '%s');
+        $register = new FanSpeedLevel($modbus, 40325, 'prmRomIdxSpeedLevel', 'Speed level of Fans', '%s');
 
         $this->assertEquals(3, $register->getValue(false));
         $this->assertEquals('3', $register->getValue(true));
@@ -38,7 +38,7 @@ final class RegisterFanSpeedLevelTest extends TestCase
     public function testWriteValue()
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new FanSpeedLevel($modbus, '324', '40325', 'prmRomIdxSpeedLevel', 'Speed level of Fans', '%s');
+        $register = new FanSpeedLevel($modbus, 40325, 'prmRomIdxSpeedLevel', 'Speed level of Fans', '%s');
 
         $valueOk = 3;
         $register->writeValue($valueOk);

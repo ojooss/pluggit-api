@@ -25,7 +25,7 @@ final class RegisterDateTimeTest extends TestCase
     public function testGetValue(): void
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new DateTime($modbus, '108','40109', 'prmDateTime', 'Current date/time', 'date-time-format');
+        $register = new DateTime($modbus, 40109, 'prmDateTime', 'Current date/time', 'date-time-format');
 
         $this->assertEquals(1570052849, $register->getValue(false));
         $this->assertEquals("10/02/2019 21:47:29", $register->getValue(true));

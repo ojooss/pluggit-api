@@ -25,10 +25,10 @@ final class RegisterFilterDefaultTimeTest extends TestCase
     public function testGetValue(): void
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new FilterDefaultTime($modbus, '556', '40555', 'prmFilterDefaultTime', 'Filter Lifetime (Days)', '%s days');
+        $register = new FilterDefaultTime($modbus, 40555, 'prmFilterDefaultTime', 'Filter Lifetime (Days)', '%s days');
 
-        $this->assertEquals(90, $register->getValue(false));
-        $this->assertEquals('90 days', $register->getValue(true));
+        $this->assertEquals(80, $register->getValue(false));
+        $this->assertEquals('80 days', $register->getValue(true));
     }
 
     /**
@@ -37,14 +37,14 @@ final class RegisterFilterDefaultTimeTest extends TestCase
     public function testWriteValue()
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new FilterDefaultTime($modbus, '556', '40555', 'prmFilterDefaultTime', 'Filter Lifetime (Days)', '%s days');
+        $register = new FilterDefaultTime($modbus, 40555, 'prmFilterDefaultTime', 'Filter Lifetime (Days)', '%s days');
 
-        $valueOk = 90;
+        $valueOk = 80;
         $register->writeValue($valueOk);
         $this->assertEquals($valueOk, $register->getValue());
 
         try {
-            $valueError = 100;
+            $valueError = -1;
             $register->writeValue($valueError);
             $this->fail('Exception not thrown');
         }

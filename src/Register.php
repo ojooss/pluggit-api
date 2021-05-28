@@ -7,6 +7,9 @@ use PHPModbus\ModbusMasterTcp;
 
 abstract class Register
 {
+
+    const REGISTER_START_ADDRESS = 40001;
+
     /**
      * @var ModbusMasterTcp
      */
@@ -16,11 +19,6 @@ abstract class Register
      * @var string
      */
     protected $reference;
-
-    /**
-     * @var string
-     */
-    protected $address;
 
     /**
      * @var string
@@ -56,18 +54,16 @@ abstract class Register
     /**
      * Register constructor.
      * @param ModbusMasterTcp $modbus
-     * @param int $reference
      * @param int $address
      * @param string $name
      * @param string $description
      * @param string $formatString
      * @throws Exception
      */
-    public function __construct(ModbusMasterTcp $modbus, int $reference, int $address, string $name, string $description, string $formatString='%s')
+    public function __construct(ModbusMasterTcp $modbus, int $address, string $name, string $description, string $formatString='%s')
     {
         $this->modbus = $modbus;
-        $this->reference = $reference;
-        $this->address = $address;
+        $this->reference = ($address-self::REGISTER_START_ADDRESS);
         $this->name = $name;
         $this->description = $description;
         $this->formatString = Translation::singleton()->translate($formatString);

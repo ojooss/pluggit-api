@@ -49,7 +49,8 @@ final class VentilationUnitTest extends TestCase
             ['getFanSpeed1', 1614.3931884765625, '1614 rpm'],
             ['getFanSpeed2', 1564.848876953125, '1565 rpm'],
             ['getFanSpeedLevel', 3, '3'],
-            ['getFilterDefaultTime', 90, '90 days'],
+            ['getFilterDefaultTime', 80, '80 days'],
+            ['getFilterRemainingTime', 80, '80 days'],
             ['getBypassState', 255, 'opened'],
             ['getBypassTemperatureMin', 15.0, '15 °C'],
             ['getBypassTemperatureMax', 21.0, '21 °C'],
@@ -58,6 +59,7 @@ final class VentilationUnitTest extends TestCase
             ['getPreheaterDutyCycle', '0', '0 %'],
             ['getCurrentBLState', 1, 'manual'],
             ['getWeekProgram', 10, '10'],
+            ['getAlarm', 3, 'Bypass Alarm'],
         ];
     }
 
@@ -79,7 +81,7 @@ final class VentilationUnitTest extends TestCase
         # get all methods
         $methods = get_class_methods(VentilationUnit::class);
 
-        # get functionname out of dataProvider
+        # get function name out of dataProvider
         $provider = $this->provider();
         $providerGetter = [];
         foreach ($provider as $item) {

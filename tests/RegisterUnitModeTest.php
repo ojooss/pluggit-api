@@ -61,7 +61,7 @@ final class RegisterUnitModeTest extends TestCase
     public function testGetValue($state, $expected): void
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new RegisterUnitModeHelper($modbus, '472', '40473', 'prmCurrentBLState', 'Current unit mode');
+        $register = new RegisterUnitModeHelper($modbus, 40473, 'prmCurrentBLState', 'Current unit mode');
         $register->setValue($state);
         $this->assertEquals($state, $register->getValue(false));
         $this->assertEquals($expected, $register->getValue(true));
@@ -73,7 +73,7 @@ final class RegisterUnitModeTest extends TestCase
     public function testWriteValue()
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new UnitMode($modbus, '168', '40169', 'prmRamIdxUnitMode', 'Active Unit mode');
+        $register = new UnitMode($modbus, 40169, 'prmRamIdxUnitMode', 'Active Unit mode');
 
         $valueOk = 8;
         $register->writeValue($valueOk);

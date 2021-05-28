@@ -25,7 +25,7 @@ final class RegisterWeekProgramTest extends TestCase
     public function testGetValue(): void
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new WeekProgram($modbus, '324', '40325', 'prmRomIdxSpeedLevel', 'Speed level of Fans', '%s');
+        $register = new WeekProgram($modbus, 40325, 'prmRomIdxSpeedLevel', 'Speed level of Fans', '%s');
 
         $this->assertEquals(3, $register->getValue(false));
         $this->assertEquals('3', $register->getValue(true));
@@ -37,7 +37,7 @@ final class RegisterWeekProgramTest extends TestCase
     public function testWriteValue()
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new WeekProgram($modbus, (40467-40001), '40467', 'prmNumOfWeekProgram', 'Number of the Active Week Program (for Week Program mode)');
+        $register = new WeekProgram($modbus, 40467, 'prmNumOfWeekProgram', 'Number of the Active Week Program (for Week Program mode)');
 
         $valueOk = 10;
         $register->writeValue($valueOk);

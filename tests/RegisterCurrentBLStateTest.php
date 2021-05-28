@@ -67,7 +67,7 @@ final class RegisterCurrentBLStateTest extends TestCase
     public function testGetValue($state, $expected): void
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new RegisterCurrentBLStateHelper($modbus, '472', '40473', 'prmCurrentBLState', 'Current unit mode');
+        $register = new RegisterCurrentBLStateHelper($modbus, 40473, 'prmCurrentBLState', 'Current unit mode');
         $register->setValue($state);
         $this->assertEquals($state, $register->getValue(false));
         $this->assertEquals($expected, $register->getValue(true));
