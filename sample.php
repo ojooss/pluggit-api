@@ -37,20 +37,24 @@ $oldValue = $ventilationUnit->getFanSpeedLevel(false);
 $ventilationUnit->setFanSpeedLevel(1);
 echo "Set FanSpeedLevel to: ".$ventilationUnit->getFanSpeedLevel(true).PHP_EOL;
 $ventilationUnit->setFanSpeedLevel($oldValue);
+echo "Reset FanSpeedLevel to: ".$ventilationUnit->getFanSpeedLevel(true).PHP_EOL;
 
 $oldValue = $ventilationUnit->getFilterDefaultTime();
 $ventilationUnit->setFilterDefaultTime(77);
 echo "Set FilterDefaultTime to: ".$ventilationUnit->getFilterDefaultTime(true).PHP_EOL;
 $ventilationUnit->setFilterDefaultTime($oldValue);
+echo "Reset FilterDefaultTime to: ".$ventilationUnit->getFilterDefaultTime(true).PHP_EOL;
 
 $oldValue = $ventilationUnit->getUnitMode(false);
 $ventilationUnit->setUnitMode(16);
 echo "Set UnitMode to: ".$ventilationUnit->getUnitMode(true).PHP_EOL;
 $ventilationUnit->setUnitMode($oldValue);
+echo "Reset UnitMode to: ".$ventilationUnit->getUnitMode(true).PHP_EOL;
 
 $oldValue = $ventilationUnit->getWeekProgram(false);
 $ventilationUnit->setWeekProgram(5);
 echo "Set WeekProgram to: ".$ventilationUnit->getWeekProgram(true).PHP_EOL;
 $ventilationUnit->setWeekProgram($oldValue);
+echo "Reset WeekProgram to: ".$ventilationUnit->getWeekProgram(true).PHP_EOL;
 
 echo PHP_EOL;
