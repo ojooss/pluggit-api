@@ -7,15 +7,20 @@ require_once __DIR__.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.
 $ipAddress = getenv('PLUGGIT_IP');
 if (empty($ipAddress)) $ipAddress = '192.168.x.x';
 
-try {
-    $ventilationUnit = new VentilationUnit($ipAddress, 'de');
-} catch (Exception $e) {
-    die($e->getMessage());
-}
-
 echo PHP_EOL;
 echo "--- PluggitApi ---".PHP_EOL;
 echo PHP_EOL;
+
+try {
+    $ventilationUnit = new VentilationUnit($ipAddress, 'de');
+    // check connection
+    echo "Check connection to $ipAddress: ";
+    $ventilationUnit->getCurrentDateTime();
+    echo "ok".PHP_EOL;
+
+} catch (Exception $e) {
+    die(PHP_EOL.'FATAL ERROR:  '.$e->getMessage().PHP_EOL);
+}
 
 echo "Current date and time: ".$ventilationUnit->getCurrentDateTime(true).' ('.$ventilationUnit->getCurrentDateTime().')'.PHP_EOL;
 echo "Start exploitation date: ".$ventilationUnit->getStartExploitationDate(true).' ('.$ventilationUnit->getStartExploitationDate().')'.PHP_EOL;
@@ -37,8 +42,8 @@ echo "Preheater duty cycle: ".$ventilationUnit->getPreheaterDutyCycle(true).' ('
 echo "Unit mode: ".$ventilationUnit->getUnitMode(true).' ('.$ventilationUnit->getUnitMode().')'.PHP_EOL;
 echo "CurrentBLState: ".$ventilationUnit->getCurrentBLState(true).' ('.$ventilationUnit->getCurrentBLState().')'.PHP_EOL;
 echo "WeekProgram: ".$ventilationUnit->getWeekProgram(true).' ('.$ventilationUnit->getWeekProgram(false).')'.PHP_EOL;
-
 echo "Alarm: ".$ventilationUnit->getAlarm(true).' ('.$ventilationUnit->getAlarm(false).')'.PHP_EOL;
+
 echo PHP_EOL;
 
 $oldValue = $ventilationUnit->getFanSpeedLevel(false);
