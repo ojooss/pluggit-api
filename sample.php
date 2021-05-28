@@ -38,6 +38,7 @@ echo "Unit mode: ".$ventilationUnit->getUnitMode(true).' ('.$ventilationUnit->ge
 echo "CurrentBLState: ".$ventilationUnit->getCurrentBLState(true).' ('.$ventilationUnit->getCurrentBLState().')'.PHP_EOL;
 echo "WeekProgram: ".$ventilationUnit->getWeekProgram(true).' ('.$ventilationUnit->getWeekProgram(false).')'.PHP_EOL;
 
+echo "Alarm: ".$ventilationUnit->getAlarm(true).' ('.$ventilationUnit->getAlarm(false).')'.PHP_EOL;
 echo PHP_EOL;
 
 $oldValue = $ventilationUnit->getFanSpeedLevel(false);
