@@ -21,7 +21,7 @@ class VentilationUnit
     /**
      * @var Register[]
      */
-    protected $register = [];
+    protected array $register = [];
 
     /**
      * VentilationUnit constructor.

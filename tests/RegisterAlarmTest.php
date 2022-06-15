@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use PluggitApi\Register\Alarm;
-use PluggitApi\Register\FanSpeedLevel;
 use PluggitApi\Translation;
 
 require_once __DIR__.DIRECTORY_SEPARATOR.'ModbusMasterMock.php';

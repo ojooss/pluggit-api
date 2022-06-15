@@ -12,7 +12,7 @@ class Floating extends Numeric
     /**
      * @var integer
      */
-    protected $decimals;
+    protected int $decimals;
 
     /**
      * Numeric constructor.

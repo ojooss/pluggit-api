@@ -7,7 +7,7 @@ use PluggitApi\Translation;
 final class TranslationTest extends TestCase
 {
 
-    private static $testfile = __DIR__.DIRECTORY_SEPARATOR.
+    private static string $testfile = __DIR__.DIRECTORY_SEPARATOR.
                                '..'.DIRECTORY_SEPARATOR.
                                'src'.DIRECTORY_SEPARATOR.
                                'languages'.DIRECTORY_SEPARATOR.

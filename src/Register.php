@@ -13,27 +13,27 @@ abstract class Register
     /**
      * @var ModbusMasterTcp
      */
-    protected $modbus;
+    protected ModbusMasterTcp $modbus;
 
     /**
      * @var string
      */
-    protected $reference;
+    protected string $reference;
 
     /**
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * @var string
      */
-    protected $description;
+    protected string $description;
 
     /**
      * @var string
      */
-    protected $formatString;
+    protected string $formatString;
 
     /**
      * @var mixed
@@ -99,7 +99,7 @@ abstract class Register
     }
 
     /**
-     * By default register is readonly
+     * By default, register is readonly
      *
      * @return bool
      */

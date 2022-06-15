@@ -14,23 +14,23 @@ class Translation
 {
 
     /**
-     * @var Translation
+     * @var Translation|null
      */
-    private static $instance;
+    private static ?Translation $instance = null;
 
     /**
      * translation key => value
      *
      * @var array
      */
-    private $dictionary;
+    private array $dictionary;
 
     /**
      * Path to language file
      *
      * @var string
      */
-    private $languageFile;
+    private string $languageFile;
 
     /**
      * Translation constructor.
@@ -43,7 +43,6 @@ class Translation
         if (!file_exists($this->languageFile)) {
             throw new Exception('No languages file found for: ' . $lang);
         }
-        /** @noinspection PhpIncludeInspection */
         $this->dictionary = require_once($this->languageFile);
     }
 
