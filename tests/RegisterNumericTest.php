@@ -27,7 +27,7 @@ final class RegisterNumericTest extends TestCase
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
         $register = new Numeric($modbus, 40555, 'prmFilterRemainingTime', 'Remaining time of the Filter Lifetime', '%s days');
-        $this->assertEquals(80, $register->getValue(false));
-        $this->assertEquals("80 days", $register->getValue(true));
+        self::assertEquals(80, $register->getValue(false));
+        self::assertEquals("80 days", $register->getValue(true));
     }
 }

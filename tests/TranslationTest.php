@@ -31,7 +31,7 @@ final class TranslationTest extends TestCase
      */
     public function testSingleton():void
     {
-        $this->assertEquals(Translation::singleton('test'), Translation::singleton('TEST'));
+        self::assertEquals(Translation::singleton('test'), Translation::singleton('TEST'));
     }
 
     /**
@@ -40,7 +40,7 @@ final class TranslationTest extends TestCase
      */
     public function testTranslateText():void
     {
-        $this->assertEquals('Testcase result', Translation::singleton('test')->translate('testcase'));
+        self::assertEquals('Testcase result', Translation::singleton('test')->translate('testcase'));
     }
 
     /**
@@ -49,8 +49,8 @@ final class TranslationTest extends TestCase
      */
     public function testMissingTranslation():void
     {
-        $this->assertEquals(__METHOD__, Translation::singleton('test')->translate(__METHOD__));
-        $this->assertStringContainsString(__METHOD__, file_get_contents(self::$testfile));
+        self::assertEquals(__METHOD__, Translation::singleton('test')->translate(__METHOD__));
+        self::assertStringContainsString(__METHOD__, file_get_contents(self::$testfile));
     }
 
     /**
@@ -64,11 +64,11 @@ final class TranslationTest extends TestCase
             $this->fail('Exception is missing');
         }
         catch (Exception $e) {
-            $this->assertStringContainsString('language parameter at first time', $e->getMessage());
+            self::assertStringContainsString('language parameter at first time', $e->getMessage());
         }
 
         $object = Translation::singleton('test');
-        $this->assertInstanceOf(Translation::class, $object);
+        self::assertInstanceOf(Translation::class, $object);
     }
 
 }

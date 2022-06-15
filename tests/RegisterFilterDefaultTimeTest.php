@@ -27,8 +27,8 @@ final class RegisterFilterDefaultTimeTest extends TestCase
         $modbus = new ModbusMasterMock('127.0.0.1');
         $register = new FilterDefaultTime($modbus, 40555, 'prmFilterDefaultTime', 'Filter Lifetime (Days)', '%s days');
 
-        $this->assertEquals(80, $register->getValue(false));
-        $this->assertEquals('80 days', $register->getValue(true));
+        self::assertEquals(80, $register->getValue(false));
+        self::assertEquals('80 days', $register->getValue(true));
     }
 
     /**
@@ -41,7 +41,7 @@ final class RegisterFilterDefaultTimeTest extends TestCase
 
         $valueOk = 80;
         $register->writeValue($valueOk);
-        $this->assertEquals($valueOk, $register->getValue());
+        self::assertEquals($valueOk, $register->getValue());
 
         try {
             $valueError = -1;
@@ -49,7 +49,7 @@ final class RegisterFilterDefaultTimeTest extends TestCase
             $this->fail('Exception not thrown');
         }
         catch (Exception $e) {
-            $this->assertStringContainsString('invalid value for default filter time', $e->getMessage());
+            self::assertStringContainsString('invalid value for default filter time', $e->getMessage());
         }
     }
 

@@ -69,8 +69,8 @@ final class VentilationUnitTest extends TestCase
     public function testRegisterGetter($getterName, $expectedRaw, $expectedFormated):void
     {
         $ventilationUnit = new VentilationUnitHelper('127.0.0.1');
-        $this->assertEquals($expectedRaw, $ventilationUnit->$getterName(), 'Error in '.$getterName);
-        $this->assertEquals($expectedFormated, $ventilationUnit->$getterName(true), 'Error in '.$getterName);
+        self::assertEquals($expectedRaw, $ventilationUnit->$getterName(), 'Error in '.$getterName);
+        self::assertEquals($expectedFormated, $ventilationUnit->$getterName(true), 'Error in '.$getterName);
     }
 
     /**
@@ -100,7 +100,7 @@ final class VentilationUnitTest extends TestCase
         $diff = array_values(array_diff($methods, $providerGetter));
 
         # compare
-        $this->assertEquals($diff, array_values($whitelist), 'Missing test for register::getter');
+        self::assertEquals($diff, array_values($whitelist), 'Missing test for register::getter');
     }
 
 }

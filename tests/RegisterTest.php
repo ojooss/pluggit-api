@@ -36,8 +36,8 @@ final class RegisterTest extends TestCase
         $modbusMaster = new ModbusMasterMock('127.0.0.1');
         $register = new RegisterHelper($modbusMaster, 9999, '123', 'Test', 'Test item');
 
-        $this->assertEquals(42, $register->getValue(false));
-        $this->assertEquals("0-8-15", $register->getValue(true));
+        self::assertEquals(42, $register->getValue(false));
+        self::assertEquals("0-8-15", $register->getValue(true));
     }
 
     /**
@@ -48,7 +48,7 @@ final class RegisterTest extends TestCase
         $modbusMaster = new ModbusMasterMock('127.0.0.1');
         $register = new RegisterHelper($modbusMaster, 9999, '123', 'Test', 'Test item');
 
-        $this->assertFalse($register->isWriteAble());
+        self::assertFalse($register->isWriteAble());
     }
 }
 

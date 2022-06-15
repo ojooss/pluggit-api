@@ -28,8 +28,8 @@ final class RegisterFanSpeedLevelTest extends TestCase
         $modbus = new ModbusMasterMock('127.0.0.1');
         $register = new FanSpeedLevel($modbus, 40325, 'prmRomIdxSpeedLevel', 'Speed level of Fans', '%s');
 
-        $this->assertEquals(3, $register->getValue(false));
-        $this->assertEquals('3', $register->getValue(true));
+        self::assertEquals(3, $register->getValue(false));
+        self::assertEquals('3', $register->getValue(true));
     }
 
     /**
@@ -42,7 +42,7 @@ final class RegisterFanSpeedLevelTest extends TestCase
 
         $valueOk = 3;
         $register->writeValue($valueOk);
-        $this->assertEquals($valueOk, $register->getValue());
+        self::assertEquals($valueOk, $register->getValue());
 
         try {
             $valueError = 5;
@@ -50,7 +50,7 @@ final class RegisterFanSpeedLevelTest extends TestCase
             $this->fail('Exception not thrown');
         }
         catch (Exception $e) {
-            $this->assertStringContainsString('invalid value for fan speed level', $e->getMessage());
+            self::assertStringContainsString('invalid value for fan speed level', $e->getMessage());
         }
     }
 

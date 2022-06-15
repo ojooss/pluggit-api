@@ -57,7 +57,7 @@ final class RegisterBypassStateTest extends TestCase
         $modbus = new ModbusMasterMock('127.0.0.1');
         $register = new RegisterBypassStateHelper($modbus, 40199, 'prmRamIdxBypassActualState', 'Bypass state');
         $register->setValue($state);
-        $this->assertEquals($state, $register->getValue(false));
-        $this->assertEquals($expected, $register->getValue(true));
+        self::assertEquals($state, $register->getValue(false));
+        self::assertEquals($expected, $register->getValue(true));
     }
 }

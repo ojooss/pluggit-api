@@ -27,8 +27,8 @@ final class RegisterWeekProgramTest extends TestCase
         $modbus = new ModbusMasterMock('127.0.0.1');
         $register = new WeekProgram($modbus, 40325, 'prmRomIdxSpeedLevel', 'Speed level of Fans', '%s');
 
-        $this->assertEquals(3, $register->getValue(false));
-        $this->assertEquals('3', $register->getValue(true));
+        self::assertEquals(3, $register->getValue(false));
+        self::assertEquals('3', $register->getValue(true));
     }
 
     /**
@@ -41,7 +41,7 @@ final class RegisterWeekProgramTest extends TestCase
 
         $valueOk = 10;
         $register->writeValue($valueOk);
-        $this->assertEquals($valueOk, $register->getValue());
+        self::assertEquals($valueOk, $register->getValue());
 
         try {
             $valueError = 15;
@@ -49,7 +49,7 @@ final class RegisterWeekProgramTest extends TestCase
             $this->fail('Exception not thrown');
         }
         catch (Exception $e) {
-            $this->assertStringContainsString('invalid value for week program', $e->getMessage());
+            self::assertStringContainsString('invalid value for week program', $e->getMessage());
         }
     }
 

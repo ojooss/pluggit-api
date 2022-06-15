@@ -39,8 +39,8 @@ final class RegisterAlarmTest extends TestCase
         $modbus = new ModbusMasterMock('127.0.0.1');
         $register = new RegisterAlarmHelper($modbus, 40517, 'prmLastActiveAlarm', 'If more Alarms are active, the alarm with highest number will be contained in the parameter.');
         $register->setValue(3);
-        $this->assertEquals(3, $register->getValue(false));
-        $this->assertEquals('Bypass Alarm', $register->getValue(true));
+        self::assertEquals(3, $register->getValue(false));
+        self::assertEquals('Bypass Alarm', $register->getValue(true));
     }
 
 }
