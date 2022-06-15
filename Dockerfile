@@ -1,4 +1,4 @@
-FROM php:7-cli
+FROM php:7.4-cli
 
 # COMPOSER
 COPY --from=composer /usr/bin/composer /usr/bin/composer
