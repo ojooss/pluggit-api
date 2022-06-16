@@ -2,7 +2,8 @@
 
 namespace PluggitApi\Register;
 
-use PHPModbus\PhpType;
+use Exception;
+use PluggitApi\PHPModbus\PhpType;
 use PluggitApi\Register;
 
 class DateTime extends Register
@@ -10,6 +11,7 @@ class DateTime extends Register
 
     /**
      * @return int
+     * @throws Exception
      */
     protected function readValue(): int
     {

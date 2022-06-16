@@ -4,57 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0267e8cc60065709b8ce01a9d12bb8a3",
-    "packages": [
-        {
-            "name": "mightypork/phpmodbus",
-            "version": "0.10.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/MightyPork/phpmodbus.git",
-                "reference": "fd2ae72b7975331ed4a5b0d09b984f923954add5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/MightyPork/phpmodbus/zipball/fd2ae72b7975331ed4a5b0d09b984f923954add5",
-                "reference": "fd2ae72b7975331ed4a5b0d09b984f923954add5",
-                "shasum": ""
-            },
-            "require": {
-                "ext-sockets": "*",
-                "php": "^5.3.2 || ^7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "PHPModbus\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL"
-            ],
-            "authors": [
-                {
-                    "name": "Honza Krakora",
-                    "email": "krakora.jan@googlemail.com"
-                },
-                {
-                    "name": "Ondřej Hruška",
-                    "email": "ondra@ondrovo.com"
-                }
-            ],
-            "description": "PhpModbus with namespaces and updated to PHP 7",
-            "keywords": [
-                "modbus",
-                "phpmodbus"
-            ],
-            "support": {
-                "source": "https://github.com/MightyPork/phpmodbus/tree/master"
-            },
-            "time": "2017-09-02T12:35:28+00:00"
-        }
-    ],
+    "content-hash": "217ee444aafd1280d658622c97e2adc7",
+    "packages": [],
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
@@ -2079,7 +2030,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4"
+        "php": "^7.4|^8.0",
+        "ext-sockets": "*"
     },
     "platform-dev": {
         "ext-json": "*"

@@ -3,7 +3,7 @@
 namespace PluggitApi;
 
 use Exception;
-use PHPModbus\ModbusMasterTcp;
+use PluggitApi\PHPModbus\ModbusMasterTcp;
 
 abstract class Register
 {

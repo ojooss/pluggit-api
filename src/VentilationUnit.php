@@ -3,7 +3,7 @@
 namespace PluggitApi;
 
 use Exception;
-use PHPModbus\ModbusMasterTcp;
+use PluggitApi\PHPModbus\ModbusMasterTcp;
 use PluggitApi\Register\Alarm;
 use PluggitApi\Register\BypassState;
 use PluggitApi\Register\CurrentBLState;

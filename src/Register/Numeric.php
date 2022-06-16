@@ -2,7 +2,8 @@
 
 namespace PluggitApi\Register;
 
-use PHPModbus\PhpType;
+use Exception;
+use PluggitApi\PHPModbus\PhpType;
 use PluggitApi\Register;
 
 class Numeric extends Register
@@ -10,6 +11,7 @@ class Numeric extends Register
 
     /**
      * @return float
+     * @throws Exception
      */
     protected function readValue(): float
     {

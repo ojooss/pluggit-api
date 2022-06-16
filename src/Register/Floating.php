@@ -3,8 +3,8 @@
 namespace PluggitApi\Register;
 
 use Exception;
-use PHPModbus\ModbusMasterTcp;
-use PHPModbus\PhpType;
+use PluggitApi\PHPModbus\ModbusMasterTcp;
+use PluggitApi\PHPModbus\PhpType;
 
 class Floating extends Numeric
 {
@@ -32,6 +32,7 @@ class Floating extends Numeric
 
     /**
      * @return float
+     * @throws Exception
      */
     protected function readValue(): float
     {

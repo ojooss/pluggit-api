@@ -1,6 +1,6 @@
 <?php
 
-use PHPModbus\ModbusMasterTcp;
+use PluggitApi\PHPModbus\ModbusMasterTcp;
 
 class ModbusMasterMock extends ModbusMasterTcp
 {

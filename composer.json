@@ -6,7 +6,7 @@
   "type": "library",
   "require": {
     "php": "^7.4|^8.0",
-    "mightypork/phpmodbus": "*"
+    "ext-sockets": "*"
   },
   "require-dev": {
     "ext-json": "*",
