@@ -11,7 +11,7 @@ class ModbusMasterMock extends ModbusMasterTcp
      * @param int $unitId
      * @param int $reference
      * @param int $quantity
-     * @return array|false|mixed
+     * @return array
      * @throws Exception
      */
     public function readMultipleRegisters(int $unitId, int $reference, int $quantity): array

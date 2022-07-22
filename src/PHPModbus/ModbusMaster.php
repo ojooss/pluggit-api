@@ -53,26 +53,26 @@ class ModbusMaster
     /** @var string Modbus device IP address */
     public string $host = "192.168.1.1";
 
-    /** @var string gateway port */
-    public $port = 502;
+    /** @var int gateway port */
+    public int $port = 502;
 
     /** @var string (optional) client IP address */
     public string $client = ""; // TODO explanation?
 
-    /** @var string client port */
-    public $client_port = 502;
+    /** @var int client port */
+    public int $client_port = 502;
 
     /** @var string ModbusMaster status messages (echo for debugging) */
     public string $status = '';
 
     /** @var float Total response timeout (seconds, decimals allowed) */
-    public $timeout_sec = 3;
+    public float $timeout_sec = 3;
 
     /** @var float Socket read timeout (seconds, decimals allowed) */
     public float $socket_read_timeout_sec = 0.3; // 300 ms
 
     /** @var float Socket write timeout (seconds, decimals allowed) */
-    public $socket_write_timeout_sec = 1;
+    public float $socket_write_timeout_sec = 1;
 
     /** @var int Endianness codding (0 = little endian = 0, 1 = big endian) */
     public int $endianness = IecType::LITTLE_ENDIAN; //
@@ -343,8 +343,7 @@ class ModbusMaster
         // build data section
         $buffer1 = "";
         // build body
-        $buffer2 = "";
-        $buffer2 .= IecType::iecBYTE(1);              // FC 1 = 1(0x01)
+        $buffer2 = IecType::iecBYTE(1);              // FC 1 = 1(0x01)
         // build body - read section
         $buffer2 .= IecType::iecINT($reference);      // refnumber = 12288
         $buffer2 .= IecType::iecINT($quantity);       // quantity
@@ -467,8 +466,7 @@ class ModbusMaster
         // build data section
         $buffer1 = "";
         // build body
-        $buffer2 = "";
-        $buffer2 .= IecType::iecBYTE(2);              // FC 2 = 2(0x02)
+        $buffer2 = IecType::iecBYTE(2);              // FC 2 = 2(0x02)
         // build body - read section
         $buffer2 .= IecType::iecINT($reference);      // refnumber = 12288
         $buffer2 .= IecType::iecINT($quantity);       // quantity
@@ -567,8 +565,7 @@ class ModbusMaster
         // build data section
         $buffer1 = "";
         // build body
-        $buffer2 = "";
-        $buffer2 .= IecType::iecBYTE(3);             // FC 3 = 3(0x03)
+        $buffer2 = IecType::iecBYTE(3);             // FC 3 = 3(0x03)
         // build body - read section
         $buffer2 .= IecType::iecINT($reference);  // refnumber = 12288
         $buffer2 .= IecType::iecINT($quantity);       // quantity
@@ -672,8 +669,7 @@ class ModbusMaster
         // build data section
         $buffer1 = "";
         // build body
-        $buffer2 = "";
-        $buffer2 .= IecType::iecBYTE(4);                                                // FC 4 = 4(0x04)
+        $buffer2 = IecType::iecBYTE(4);                                                // FC 4 = 4(0x04)
         // build body - read section
         $buffer2 .= IecType::iecINT($reference);                                        // refnumber = 12288
         $buffer2 .= IecType::iecINT($quantity);                                         // quantity
@@ -784,8 +780,7 @@ class ModbusMaster
         }
         $dataLen += 2;
         // build body
-        $buffer2 = "";
-        $buffer2 .= IecType::iecBYTE(5);             // FC5 = 5(0x05)
+        $buffer2 = IecType::iecBYTE(5);             // FC5 = 5(0x05)
         $buffer2 .= IecType::iecINT($reference);      // refnumber = 12288
         $dataLen += 3;
         // build header
@@ -885,8 +880,7 @@ class ModbusMaster
             break;
         }
         // build body
-        $buffer2 = "";
-        $buffer2 .= IecType::iecBYTE(6);             // FC6 = 6(0x06)
+        $buffer2 = IecType::iecBYTE(6);             // FC6 = 6(0x06)
         $buffer2 .= IecType::iecINT($reference);      // refnumber = 12288
         $dataLen += 3;
         // build header
@@ -1001,8 +995,7 @@ class ModbusMaster
             $dataLen += 1;
         }
         // build body
-        $buffer2 = "";
-        $buffer2 .= IecType::iecBYTE(15);             // FC 15 = 15(0x0f)
+        $buffer2 = IecType::iecBYTE(15);             // FC 15 = 15(0x0f)
         $buffer2 .= IecType::iecINT($reference);      // refnumber = 12288
         $buffer2 .= IecType::iecINT(count($data));      // bit count
         $buffer2 .= IecType::iecBYTE((count($data) + 7) / 8);       // byte count
@@ -1124,8 +1117,7 @@ class ModbusMaster
             }
         }
         // build body
-        $buffer2 = "";
-        $buffer2 .= IecType::iecBYTE(16);             // FC 16 = 16(0x10)
+        $buffer2 = IecType::iecBYTE(16);             // FC 16 = 16(0x10)
         $buffer2 .= IecType::iecINT($reference);      // refnumber = 12288
         $buffer2 .= IecType::iecINT($dataLen / 2);        // word count
         $buffer2 .= IecType::iecBYTE($dataLen);     // byte count
@@ -1226,8 +1218,7 @@ class ModbusMaster
         // build data section
         $buffer1 = "";
         // build body
-        $buffer2 = "";
-        $buffer2 .= IecType::iecBYTE(22);             // FC 22 = 22(0x16)
+        $buffer2 = IecType::iecBYTE(22);             // FC 22 = 22(0x16)
         $buffer2 .= IecType::iecINT($reference);      // refnumber = 12288
         $buffer2 .= IecType::iecINT($andMask);        // AND mask
         $buffer2 .= IecType::iecINT($orMask);          // OR mask
@@ -1377,8 +1368,7 @@ class ModbusMaster
             }
         }
         // build body
-        $buffer2 = "";
-        $buffer2 .= IecType::iecBYTE(23);             // FC 23 = 23(0x17)
+        $buffer2 = IecType::iecBYTE(23);             // FC 23 = 23(0x17)
         // build body - read section
         $buffer2 .= IecType::iecINT($referenceRead);  // refnumber = 12288
         $buffer2 .= IecType::iecINT($quantity);       // quantity

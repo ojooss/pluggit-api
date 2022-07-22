@@ -189,12 +189,12 @@ class PhpType
      * Switch double word to unsigned integer
      *
      * @param int $value
-     * @return int|float
+     * @return int
      */
-    private static function dword2unsignedInt(int $value)
+    private static function dword2unsignedInt(int $value): int
     {
         if ((0x80000000 & $value) != 0) {
-            return ((float)(0x7FFFFFFF & $value)) + 2147483648;
+            return (0x7FFFFFFF & $value) + 2147483648;
         } else {
             return (0x7FFFFFFF & $value);
         }

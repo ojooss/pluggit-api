@@ -16,9 +16,9 @@ abstract class Register
     protected ModbusMasterTcp $modbus;
 
     /**
-     * @var string
+     * @var int
      */
-    protected string $reference;
+    protected int $reference;
 
     /**
      * @var string
@@ -68,7 +68,7 @@ abstract class Register
         string $formatString = '%s'
     ) {
         $this->modbus = $modbus;
-        $this->reference = ($address-self::REGISTER_START_ADDRESS);
+        $this->reference = ($address - self::REGISTER_START_ADDRESS);
         $this->name = $name;
         $this->description = $description;
         $this->formatString = Translation::singleton()->translate($formatString);
