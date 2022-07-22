@@ -2,8 +2,8 @@
 
 namespace PluggitApi\Tests\Helper;
 
+use Exception;
 use PluggitApi\PHPModbus\ModbusMasterTcp;
-use PluggitApi\Tests\Helper\Exception;
 
 class ModbusMasterMock extends ModbusMasterTcp
 {
@@ -16,7 +16,10 @@ class ModbusMasterMock extends ModbusMasterTcp
      */
     public function readMultipleRegisters(int $unitId, int $reference, int $quantity): array
     {
-        $mockFile = __DIR__.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.$reference.'.mock';
+        $mockFile = __DIR__.DIRECTORY_SEPARATOR.
+            '..'.DIRECTORY_SEPARATOR.
+            'data'.DIRECTORY_SEPARATOR.
+            $reference.'.mock';
         if (file_exists($mockFile)) {
             $json = file_get_contents($mockFile);
             return json_decode($json);

@@ -8,7 +8,7 @@ services:
     image: pluggit-api:local
     volumes:
       - .:/app
-    command: bash -c "composer install  &&  cd tests  &&  bash run.sh"
+    command: bash -c "composer install  &&  php vendor/bin/phpunit"
 
   sample:
     image: pluggit-api:local

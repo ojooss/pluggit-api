@@ -18,7 +18,7 @@ final class RegisterAlarmTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         // init with test language
-        Translation::singleton();
+        Translation::singleton('en');
     }
 
     /**

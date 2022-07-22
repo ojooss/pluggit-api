@@ -5,6 +5,7 @@ namespace PluggitApi\Tests;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
+use PluggitApi\Tests\Helper\VentilationUnitHelper;
 use PluggitApi\Translation;
 use PluggitApi\VentilationUnit;
 
@@ -17,7 +18,7 @@ final class VentilationUnitTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         // init with test language
-        Translation::singleton();
+        Translation::singleton('en');
     }
 
     /**

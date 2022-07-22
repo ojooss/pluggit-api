@@ -24,4 +24,4 @@
   "scripts": {
     "sniff": "php vendor/bin/phpcs"
   }
-} 
+}
