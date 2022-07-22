@@ -5,7 +5,6 @@ namespace PluggitApi\Register;
 use Exception;
 use PluggitApi\Translation;
 
-
 class BypassState extends Numeric
 {
 
@@ -16,7 +15,7 @@ class BypassState extends Numeric
      */
     protected function formatValue($value): string
     {
-        switch($value) {
+        switch ($value) {
             case 0:
                 return Translation::singleton()->translate('bypass-stats-closed');
             case 1:
@@ -27,9 +26,8 @@ class BypassState extends Numeric
                 return Translation::singleton()->translate('bypass-stats-opening');
             case 255:
                 return Translation::singleton()->translate('bypass-stats-opened');
-            default	:
+            default:
                 return Translation::singleton()->translate('bypass-stats-unknown');
         }
     }
-
 }

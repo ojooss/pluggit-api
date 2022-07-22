@@ -26,7 +26,9 @@ class WeekProgram extends Numeric
     {
         //validate
         if ($value   < 0 || $value > 10) {
-            throw new Exception(sprintf(Translation::singleton()->translate('week-program-invalid-value'), $value));
+            throw new Exception(
+                sprintf(Translation::singleton()->translate('week-program-invalid-value'), $value)
+            );
         }
 
         // and write
@@ -36,10 +38,10 @@ class WeekProgram extends Numeric
         $checkValue = $this->readValue();
         if ($value == $checkValue) {
             $this->value = $value;
-        }
-        else {
-            throw new Exception(sprintf(Translation::singleton()->translate('week-program-failed-set-value'), $value, $checkValue));
+        } else {
+            throw new Exception(
+                sprintf(Translation::singleton()->translate('week-program-failed-set-value'), $value, $checkValue)
+            );
         }
     }
-
 }

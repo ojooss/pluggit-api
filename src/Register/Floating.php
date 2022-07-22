@@ -24,8 +24,14 @@ class Floating extends Numeric
      * @param int $decimals
      * @throws Exception
      */
-    public function __construct(ModbusMasterTcp $modbus, int $address, string $name, string $description, string $formatString='%s', int $decimals=0)
-    {
+    public function __construct(
+        ModbusMasterTcp $modbus,
+        int $address,
+        string $name,
+        string $description,
+        string $formatString = '%s',
+        int $decimals = 0
+    ) {
         parent::__construct($modbus, $address, $name, $description, $formatString);
         $this->decimals = $decimals;
     }
@@ -57,5 +63,4 @@ class Floating extends Numeric
 
         return sprintf($this->formatString, $number);
     }
-
 }

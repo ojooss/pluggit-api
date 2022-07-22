@@ -1,23 +1,12 @@
 <?php
 declare(strict_types=1);
 
+namespace PluggitApi\Tests;
+
+use Exception;
 use PHPUnit\Framework\TestCase;
-use PluggitApi\Register\CurrentBLState;
+use PluggitApi\Tests\Helper\ModbusMasterMock;
 use PluggitApi\Translation;
-
-require_once __DIR__.DIRECTORY_SEPARATOR.'ModbusMasterMock.php';
-
-class RegisterCurrentBLStateHelper extends CurrentBLState
-{
-    /**
-     * @param $value
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-    }
-
-}
 
 final class RegisterCurrentBLStateTest extends TestCase
 {
@@ -28,7 +17,7 @@ final class RegisterCurrentBLStateTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         // init with test language
-        Translation::singleton('en');
+        Translation::singleton();
     }
 
     /**
@@ -67,9 +56,9 @@ final class RegisterCurrentBLStateTest extends TestCase
     public function testGetValue($state, $expected): void
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new RegisterCurrentBLStateHelper($modbus, 40473, 'prmCurrentBLState', 'Current unit mode');
+        $register = new Helper\RegisterCurrentBLStateHelper($modbus, 40473, 'prmCurrentBLState', 'Current unit mode');
         $register->setValue($state);
-        self::assertEquals($state, $register->getValue(false));
+        self::assertEquals($state, $register->getValue());
         self::assertEquals($expected, $register->getValue(true));
     }
 }

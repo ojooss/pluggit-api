@@ -26,7 +26,9 @@ class FilterDefaultTime extends Numeric
     {
         //validate
         if ($value < 0) {
-            throw new Exception(sprintf(Translation::singleton()->translate('filter-time-invalid-value'), $value));
+            throw new Exception(
+                sprintf(Translation::singleton()->translate('filter-time-invalid-value'), $value)
+            );
         }
         // and write
         $this->modbus->writeMultipleRegister(0, $this->reference, [$value, 0], ["INT", "INT"]);
@@ -35,10 +37,10 @@ class FilterDefaultTime extends Numeric
         $checkValue = $this->readValue();
         if ($value == $checkValue) {
             $this->value = $value;
-        }
-        else {
-            throw new Exception(sprintf(Translation::singleton()->translate('filter-time-failed-set-value'), $value, $checkValue));
+        } else {
+            throw new Exception(
+                sprintf(Translation::singleton()->translate('filter-time-failed-set-value'), $value, $checkValue)
+            );
         }
     }
-
 }

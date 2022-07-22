@@ -29,5 +29,4 @@ class DateTime extends Register
         $dateTime = \DateTime::createFromFormat('U', $value);
         return $dateTime->format($this->formatString);
     }
-
 }

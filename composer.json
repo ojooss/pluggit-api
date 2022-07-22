@@ -10,9 +10,18 @@
   },
   "require-dev": {
     "ext-json": "*",
-    "phpunit/phpunit": "^9.5"
+    "phpunit/phpunit": "^9.5",
+    "squizlabs/php_codesniffer": "^3.7"
   },
   "autoload": {
     "psr-4": {"PluggitApi\\": "src/"}
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PluggitApi\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "sniff": "php vendor/bin/phpcs"
   }
-}
+} 

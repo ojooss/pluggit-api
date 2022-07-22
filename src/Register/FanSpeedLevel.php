@@ -26,7 +26,9 @@ class FanSpeedLevel extends Numeric
     {
         //validate
         if ($value   < 0 || $value > 4) {
-            throw new Exception(sprintf(Translation::singleton()->translate('fan-speed-invalid-value'), $value));
+            throw new Exception(
+                sprintf(Translation::singleton()->translate('fan-speed-invalid-value'), $value)
+            );
         }
 
         // and write
@@ -36,10 +38,10 @@ class FanSpeedLevel extends Numeric
         $checkValue = $this->readValue();
         if ($value == $checkValue) {
             $this->value = $value;
-        }
-        else {
-            throw new Exception(sprintf(Translation::singleton()->translate('fan-speed-failed-set-value'), $value, $checkValue));
+        } else {
+            throw new Exception(
+                sprintf(Translation::singleton()->translate('fan-speed-failed-set-value'), $value, $checkValue)
+            );
         }
     }
-
 }

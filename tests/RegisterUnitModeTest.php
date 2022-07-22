@@ -1,23 +1,13 @@
 <?php
 declare(strict_types=1);
 
+namespace PluggitApi\Tests;
+
+use Exception;
 use PHPUnit\Framework\TestCase;
 use PluggitApi\Register\UnitMode;
+use PluggitApi\Tests\Helper\ModbusMasterMock;
 use PluggitApi\Translation;
-
-require_once __DIR__.DIRECTORY_SEPARATOR.'ModbusMasterMock.php';
-
-class RegisterUnitModeHelper extends UnitMode
-{
-    /**
-     * @param $value
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-    }
-
-}
 
 final class RegisterUnitModeTest extends TestCase
 {
@@ -28,7 +18,7 @@ final class RegisterUnitModeTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         // init with test language
-        Translation::singleton('en');
+        Translation::singleton();
     }
 
     /**
@@ -61,9 +51,9 @@ final class RegisterUnitModeTest extends TestCase
     public function testGetValue($state, $expected): void
     {
         $modbus = new ModbusMasterMock('127.0.0.1');
-        $register = new RegisterUnitModeHelper($modbus, 40473, 'prmCurrentBLState', 'Current unit mode');
+        $register = new Helper\RegisterUnitModeHelper($modbus, 40473, 'prmCurrentBLState', 'Current unit mode');
         $register->setValue($state);
-        self::assertEquals($state, $register->getValue(false));
+        self::assertEquals($state, $register->getValue());
         self::assertEquals($expected, $register->getValue(true));
     }
 
@@ -83,10 +73,8 @@ final class RegisterUnitModeTest extends TestCase
             $valueError = 42;
             $register->writeValue($valueError);
             $this->fail('Exception not thrown');
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             self::assertStringContainsString('invalid value for unit mode', $e->getMessage());
         }
     }
-
 }

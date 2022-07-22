@@ -28,5 +28,4 @@ class Numeric extends Register
     {
         return sprintf($this->formatString, $value);
     }
-
 }

@@ -60,8 +60,13 @@ abstract class Register
      * @param string $formatString
      * @throws Exception
      */
-    public function __construct(ModbusMasterTcp $modbus, int $address, string $name, string $description, string $formatString='%s')
-    {
+    public function __construct(
+        ModbusMasterTcp $modbus,
+        int $address,
+        string $name,
+        string $description,
+        string $formatString = '%s'
+    ) {
         $this->modbus = $modbus;
         $this->reference = ($address-self::REGISTER_START_ADDRESS);
         $this->name = $name;
@@ -74,7 +79,8 @@ abstract class Register
      *
      * @param ModbusMasterTcp $modbus
      */
-    public function setModbus(ModbusMasterTcp $modbus) {
+    public function setModbus(ModbusMasterTcp $modbus)
+    {
         $this->modbus = $modbus;
     }
 
@@ -84,7 +90,7 @@ abstract class Register
      * @param bool $force
      * @return mixed
      */
-    public function getValue(bool $formatted=false, bool $force=false)
+    public function getValue(bool $formatted = false, bool $force = false)
     {
         if (null === $this->value || $force) {
             $this->value = $this->readValue();
@@ -92,8 +98,7 @@ abstract class Register
 
         if ($formatted) {
             return $this->formatValue($this->value);
-        }
-        else {
+        } else {
             return $this->value;
         }
     }

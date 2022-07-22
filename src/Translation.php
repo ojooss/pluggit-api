@@ -37,7 +37,7 @@ class Translation
      * @param string $lang
      * @throws Exception
      */
-    private function __construct(string $lang='en')
+    private function __construct(string $lang = 'en')
     {
         $this->languageFile = __DIR__.DIRECTORY_SEPARATOR.'languages'.DIRECTORY_SEPARATOR.$lang.'.php';
         if (!file_exists($this->languageFile)) {
@@ -51,7 +51,7 @@ class Translation
      * @return Translation
      * @throws Exception
      */
-    public static function singleton(string $lang=''): Translation
+    public static function singleton(string $lang = ''): Translation
     {
         // return existing instance
         if (null !== self::$instance) {
@@ -71,14 +71,17 @@ class Translation
      * @param $key
      * @return mixed
      */
-    public function translate($key) {
+    public function translate($key)
+    {
         if (isset($this->dictionary[$key])) {
             return $this->dictionary[$key];
-        }
-        else {
-            file_put_contents($this->languageFile, "// missing translation:    '".$key."' => '".$key."',".PHP_EOL,FILE_APPEND);
+        } else {
+            file_put_contents(
+                $this->languageFile,
+                "// missing translation:    '".$key."' => '".$key."',".PHP_EOL,
+                FILE_APPEND
+            );
             return $key;
         }
     }
-
 }

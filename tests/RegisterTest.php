@@ -1,30 +1,12 @@
 <?php
 declare(strict_types=1);
 
+namespace PluggitApi\Tests;
+
+use Exception;
 use PHPUnit\Framework\TestCase;
-use PluggitApi\Register;
-require_once __DIR__.DIRECTORY_SEPARATOR.'ModbusMasterMock.php';
-
-class RegisterHelper extends Register
-{
-    /**
-     * @return int
-     */
-    protected function readValue(): int
-    {
-        return 42;
-    }
-
-    /**
-     * @param $value
-     * @return string
-     */
-    protected function formatValue($value): string
-    {
-        return "0-8-15";
-    }
-
-}
+use PluggitApi\Tests\Helper\ModbusMasterMock;
+use PluggitApi\Tests\Helper\RegisterHelper;
 
 final class RegisterTest extends TestCase
 {
@@ -36,7 +18,7 @@ final class RegisterTest extends TestCase
         $modbusMaster = new ModbusMasterMock('127.0.0.1');
         $register = new RegisterHelper($modbusMaster, 9999, '123', 'Test', 'Test item');
 
-        self::assertEquals(42, $register->getValue(false));
+        self::assertEquals(42, $register->getValue());
         self::assertEquals("0-8-15", $register->getValue(true));
     }
 
@@ -51,4 +33,3 @@ final class RegisterTest extends TestCase
         self::assertFalse($register->isWriteAble());
     }
 }
-

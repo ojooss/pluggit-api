@@ -1,0 +1,16 @@
+<?php
+
+namespace PluggitApi\Tests\Helper;
+
+use PluggitApi\Register\Alarm;
+
+class RegisterAlarmHelper extends Alarm
+{
+    /**
+     * @param $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
+}

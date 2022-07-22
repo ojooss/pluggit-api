@@ -1,25 +1,12 @@
 <?php
 declare(strict_types=1);
 
+namespace PluggitApi\Tests;
+
+use Exception;
 use PHPUnit\Framework\TestCase;
 use PluggitApi\Translation;
 use PluggitApi\VentilationUnit;
-
-require_once __DIR__.DIRECTORY_SEPARATOR.'ModbusMasterMock.php';
-
-class VentilationUnitHelper extends VentilationUnit
-{
-    public function __construct($ipAddress)
-    {
-        parent::__construct($ipAddress, 'en');
-
-        $modbus = new ModbusMasterMock($ipAddress);
-
-        foreach ($this->register as $item) {
-            $item->setModbus($modbus);
-        }
-    }
-}
 
 final class VentilationUnitTest extends TestCase
 {
@@ -30,7 +17,7 @@ final class VentilationUnitTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         // init with test language
-        Translation::singleton('en');
+        Translation::singleton();
     }
 
     /**
@@ -102,5 +89,4 @@ final class VentilationUnitTest extends TestCase
         # compare
         self::assertEquals($diff, array_values($whitelist), 'Missing test for register::getter');
     }
-
 }

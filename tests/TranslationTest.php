@@ -1,6 +1,9 @@
 <?php
 declare(strict_types=1);
 
+namespace PluggitApi\Tests;
+
+use Exception;
 use PHPUnit\Framework\TestCase;
 use PluggitApi\Translation;
 
@@ -62,13 +65,11 @@ final class TranslationTest extends TestCase
         try {
             Translation::singleton();
             $this->fail('Exception is missing');
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             self::assertStringContainsString('language parameter at first time', $e->getMessage());
         }
 
         $object = Translation::singleton('test');
         self::assertInstanceOf(Translation::class, $object);
     }
-
 }

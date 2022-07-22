@@ -1,11 +1,13 @@
 <?php
 declare(strict_types=1);
 
+namespace PluggitApi\Tests;
+
+use Exception;
 use PHPUnit\Framework\TestCase;
 use PluggitApi\Register\FilterDefaultTime;
+use PluggitApi\Tests\Helper\ModbusMasterMock;
 use PluggitApi\Translation;
-
-require_once __DIR__.DIRECTORY_SEPARATOR.'ModbusMasterMock.php';
 
 final class RegisterFilterDefaultTimeTest extends TestCase
 {
@@ -16,7 +18,7 @@ final class RegisterFilterDefaultTimeTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         // init with test language
-        Translation::singleton('en');
+        Translation::singleton();
     }
 
     /**
@@ -27,7 +29,7 @@ final class RegisterFilterDefaultTimeTest extends TestCase
         $modbus = new ModbusMasterMock('127.0.0.1');
         $register = new FilterDefaultTime($modbus, 40555, 'prmFilterDefaultTime', 'Filter Lifetime (Days)', '%s days');
 
-        self::assertEquals(80, $register->getValue(false));
+        self::assertEquals(80, $register->getValue());
         self::assertEquals('80 days', $register->getValue(true));
     }
 
@@ -47,10 +49,8 @@ final class RegisterFilterDefaultTimeTest extends TestCase
             $valueError = -1;
             $register->writeValue($valueError);
             $this->fail('Exception not thrown');
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             self::assertStringContainsString('invalid value for default filter time', $e->getMessage());
         }
     }
-
 }

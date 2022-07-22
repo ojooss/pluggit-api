@@ -37,15 +37,15 @@ namespace PluggitApi\PHPModbus;
  */
 class ModbusMasterTcp extends ModbusMaster
 {
-	/**
-	 * ModbusMasterTcp
-	 *
-	 * This is the constructor that defines {@link $host} IP address of the object.
-	 *
-	 * @param String $host An IP address of a Modbus TCP device. E.g. "192.168.1.1".
-	 */
-	public function __construct(string $host)
-	{
-		parent::__construct($host, "TCP");
-	}
+    /**
+     * ModbusMasterTcp
+     *
+     * This is the constructor that defines {@link $host} IP address of the object.
+     *
+     * @param String $host An IP address of a Modbus TCP device. E.g. "192.168.1.1".
+     */
+    public function __construct(string $host)
+    {
+        parent::__construct($host, "TCP");
+    }
 }

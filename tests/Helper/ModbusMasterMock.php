@@ -1,6 +1,9 @@
 <?php
 
+namespace PluggitApi\Tests\Helper;
+
 use PluggitApi\PHPModbus\ModbusMasterTcp;
+use PluggitApi\Tests\Helper\Exception;
 
 class ModbusMasterMock extends ModbusMasterTcp
 {
@@ -17,8 +20,7 @@ class ModbusMasterMock extends ModbusMasterTcp
         if (file_exists($mockFile)) {
             $json = file_get_contents($mockFile);
             return json_decode($json);
-        }
-        else {
+        } else {
             throw new Exception('No mock data available for ' . $reference);
         }
     }
@@ -34,5 +36,4 @@ class ModbusMasterMock extends ModbusMasterTcp
     {
         return true;
     }
-
 }
