@@ -10,6 +10,9 @@
   },
   "require-dev": {
     "ext-json": "*",
+    "phpstan/extension-installer": "^1.1",
+    "phpstan/phpstan": "^1.8",
+    "phpstan/phpstan-deprecation-rules": "^1.0",
     "phpunit/phpunit": "^9.5",
     "squizlabs/php_codesniffer": "^3.7"
   },
@@ -21,7 +24,13 @@
       "PluggitApi\\Tests\\": "tests/"
     }
   },
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
+  },
   "scripts": {
-    "sniff": "php vendor/bin/phpcs"
+    "sniff": "php vendor/bin/phpcs",
+    "phpstan": "php vendor/bin/phpstan analyse src tests --level 3"
   }
 }
