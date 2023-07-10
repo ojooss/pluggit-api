@@ -9,7 +9,7 @@ class RegisterCurrentBLStateHelper extends CurrentBLState
     /**
      * @param $value
      */
-    public function setValue($value)
+    public function setValue($value): void
     {
         $this->value = $value;
     }

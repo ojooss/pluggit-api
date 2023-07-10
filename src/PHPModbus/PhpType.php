@@ -89,7 +89,7 @@ class PhpType
      * @return int|float
      * @throws Exception
      */
-    public static function bytes2unsignedInt(array $values, int $endianness = IecType::LITTLE_ENDIAN)
+    public static function bytes2unsignedInt(array $values, int $endianness = IecType::LITTLE_ENDIAN): float|int
     {
         // Set the array to correct form
         $data = self::checkData($values);

@@ -15,32 +15,20 @@ class UnitMode extends Numeric
      */
     protected function formatValue($value): string
     {
-        switch ($value) {
-            case 2:
-                return Translation::singleton()->translate('unit-mode-demand');
-            case 4:
-                return Translation::singleton()->translate('unit-mode-manual');
-            case 8:
-                return Translation::singleton()->translate('unit-mode-program');
-            case 16:
-                return Translation::singleton()->translate('unit-mode-away');
-            case 32784:
-                return Translation::singleton()->translate('unit-mode-away-end');
-            case 64:
-                return Translation::singleton()->translate('unit-mode-fireplace');
-            case 32832:
-                return Translation::singleton()->translate('unit-mode-fireplace-end');
-            case 2048:
-                return Translation::singleton()->translate('unit-mode-summer');
-            case 34816:
-                return Translation::singleton()->translate('unit-mode-summer-end');
-            case 128:
-                return Translation::singleton()->translate('unit-mode-bypass-enable');
-            case 32896:
-                return Translation::singleton()->translate('unit-mode-bypass-disable');
-            default:
-                return Translation::singleton()->translate('unit-mode-unknown');
-        }
+        return match ($value) {
+            2 => Translation::singleton()->translate('unit-mode-demand'),
+            4 => Translation::singleton()->translate('unit-mode-manual'),
+            8 => Translation::singleton()->translate('unit-mode-program'),
+            16 => Translation::singleton()->translate('unit-mode-away'),
+            64 => Translation::singleton()->translate('unit-mode-fireplace'),
+            128 => Translation::singleton()->translate('unit-mode-bypass-enable'),
+            2048 => Translation::singleton()->translate('unit-mode-summer'),
+            32784 => Translation::singleton()->translate('unit-mode-away-end'),
+            32832 => Translation::singleton()->translate('unit-mode-fireplace-end'),
+            32896 => Translation::singleton()->translate('unit-mode-bypass-disable'),
+            34816 => Translation::singleton()->translate('unit-mode-summer-end'),
+            default => Translation::singleton()->translate('unit-mode-unknown'),
+        };
     }
 
 
@@ -58,7 +46,7 @@ class UnitMode extends Numeric
      * @param $value
      * @throws Exception
      */
-    public function writeValue($value)
+    public function writeValue($value): void
     {
 
         switch ($value) {

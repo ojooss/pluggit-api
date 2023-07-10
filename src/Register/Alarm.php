@@ -15,42 +15,25 @@ class Alarm extends Numeric
      */
     protected function formatValue($value): string
     {
-        switch ($value) {
-            case 0:
-                return Translation::singleton()->translate('alarm-0');
-            case 1:
-                return Translation::singleton()->translate('alarm-1');
-            case 2:
-                return Translation::singleton()->translate('alarm-2');
-            case 3:
-                return Translation::singleton()->translate('alarm-3');
-            case 4:
-                return Translation::singleton()->translate('alarm-4');
-            case 5:
-                return Translation::singleton()->translate('alarm-5');
-            case 6:
-                return Translation::singleton()->translate('alarm-6');
-            case 7:
-                return Translation::singleton()->translate('alarm-7');
-            case 8:
-                return Translation::singleton()->translate('alarm-8');
-            case 9:
-                return Translation::singleton()->translate('alarm-9');
-            case 10:
-                return Translation::singleton()->translate('alarm-10');
-            case 11:
-                return Translation::singleton()->translate('alarm-11');
-            case 12:
-                return Translation::singleton()->translate('alarm-12');
-            case 13:
-                return Translation::singleton()->translate('alarm-13');
-            case 14:
-                return Translation::singleton()->translate('alarm-14');
-            case 15:
-                return Translation::singleton()->translate('alarm-15');
-            default:
-                return Translation::singleton()->translate('alarm-unknown');
-        }
+        return match ($value) {
+            0 => Translation::singleton()->translate('alarm-0'),
+            1 => Translation::singleton()->translate('alarm-1'),
+            2 => Translation::singleton()->translate('alarm-2'),
+            3 => Translation::singleton()->translate('alarm-3'),
+            4 => Translation::singleton()->translate('alarm-4'),
+            5 => Translation::singleton()->translate('alarm-5'),
+            6 => Translation::singleton()->translate('alarm-6'),
+            7 => Translation::singleton()->translate('alarm-7'),
+            8 => Translation::singleton()->translate('alarm-8'),
+            9 => Translation::singleton()->translate('alarm-9'),
+            10 => Translation::singleton()->translate('alarm-10'),
+            11 => Translation::singleton()->translate('alarm-11'),
+            12 => Translation::singleton()->translate('alarm-12'),
+            13 => Translation::singleton()->translate('alarm-13'),
+            14 => Translation::singleton()->translate('alarm-14'),
+            15 => Translation::singleton()->translate('alarm-15'),
+            default => Translation::singleton()->translate('alarm-unknown'),
+        };
     }
 
 

@@ -81,7 +81,7 @@ class IecType
     /**
      * iecREAL
      *
-     * Converts a value to IEC-1131 REAL data type. The function uses function  @use float2iecReal.
+     * Converts a value to IEC-1131 REAL data type. The function uses function.
      *
      * @param int $value to be converted
      * @param int $endianness defines endian codding

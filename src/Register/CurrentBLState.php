@@ -15,43 +15,25 @@ class CurrentBLState extends Numeric
      */
     protected function formatValue($value): string
     {
-        switch ($value) {
-            case 0:
-                return Translation::singleton()->translate('current-bl-state-standby');
-            case 1:
-                return Translation::singleton()->translate('current-bl-state-manual');
-            case 2:
-                return Translation::singleton()->translate('current-bl-state-demand');
-            case 3:
-                return Translation::singleton()->translate('current-bl-state-week-program');
-            case 4:
-                return Translation::singleton()->translate('current-bl-state-servo-flow');
-            case 5:
-                return Translation::singleton()->translate('current-bl-state-away');
-            case 6:
-                return Translation::singleton()->translate('current-bl-state-summer');
-            case 7:
-                return Translation::singleton()->translate('current-bl-state-di-override');
-            case 8:
-                return Translation::singleton()->translate('current-bl-state-hygrostat-override');
-            case 9:
-                return Translation::singleton()->translate('current-bl-state-fireplace');
-            case 10:
-                return Translation::singleton()->translate('current-bl-state-installer');
-            case 11:
-                return Translation::singleton()->translate('current-bl-state-fail-safe-1');
-            case 12:
-                return Translation::singleton()->translate('current-bl-state-fail-safe-2');
-            case 13:
-                return Translation::singleton()->translate('current-bl-state-fail-off');
-            case 14:
-                return Translation::singleton()->translate('current-bl-state-defrost-off');
-            case 15:
-                return Translation::singleton()->translate('current-bl-state-defrost');
-            case 16:
-                return Translation::singleton()->translate('current-bl-state-night');
-            default:
-                return Translation::singleton()->translate('current-bl-state-unknown');
-        }
+        return match ($value) {
+            0 => Translation::singleton()->translate('current-bl-state-standby'),
+            1 => Translation::singleton()->translate('current-bl-state-manual'),
+            2 => Translation::singleton()->translate('current-bl-state-demand'),
+            3 => Translation::singleton()->translate('current-bl-state-week-program'),
+            4 => Translation::singleton()->translate('current-bl-state-servo-flow'),
+            5 => Translation::singleton()->translate('current-bl-state-away'),
+            6 => Translation::singleton()->translate('current-bl-state-summer'),
+            7 => Translation::singleton()->translate('current-bl-state-di-override'),
+            8 => Translation::singleton()->translate('current-bl-state-hygrostat-override'),
+            9 => Translation::singleton()->translate('current-bl-state-fireplace'),
+            10 => Translation::singleton()->translate('current-bl-state-installer'),
+            11 => Translation::singleton()->translate('current-bl-state-fail-safe-1'),
+            12 => Translation::singleton()->translate('current-bl-state-fail-safe-2'),
+            13 => Translation::singleton()->translate('current-bl-state-fail-off'),
+            14 => Translation::singleton()->translate('current-bl-state-defrost-off'),
+            15 => Translation::singleton()->translate('current-bl-state-defrost'),
+            16 => Translation::singleton()->translate('current-bl-state-night'),
+            default => Translation::singleton()->translate('current-bl-state-unknown'),
+        };
     }
 }

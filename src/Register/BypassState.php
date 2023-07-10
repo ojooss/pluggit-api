@@ -15,19 +15,13 @@ class BypassState extends Numeric
      */
     protected function formatValue($value): string
     {
-        switch ($value) {
-            case 0:
-                return Translation::singleton()->translate('bypass-stats-closed');
-            case 1:
-                return Translation::singleton()->translate('bypass-stats-in-process');
-            case 32:
-                return Translation::singleton()->translate('bypass-stats-closing');
-            case 64:
-                return Translation::singleton()->translate('bypass-stats-opening');
-            case 255:
-                return Translation::singleton()->translate('bypass-stats-opened');
-            default:
-                return Translation::singleton()->translate('bypass-stats-unknown');
-        }
+        return match ($value) {
+            0 => Translation::singleton()->translate('bypass-stats-closed'),
+            1 => Translation::singleton()->translate('bypass-stats-in-process'),
+            32 => Translation::singleton()->translate('bypass-stats-closing'),
+            64 => Translation::singleton()->translate('bypass-stats-opening'),
+            255 => Translation::singleton()->translate('bypass-stats-opened'),
+            default => Translation::singleton()->translate('bypass-stats-unknown'),
+        };
     }
 }

@@ -9,7 +9,7 @@ class RegisterBypassStateHelper extends BypassState
     /**
      * @param $value
      */
-    public function setValue($value)
+    public function setValue($value): void
     {
         $this->value = $value;
     }

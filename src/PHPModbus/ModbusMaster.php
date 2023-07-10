@@ -5,6 +5,7 @@
 namespace PluggitApi\PHPModbus;
 
 use Exception;
+use Socket;
 
 /**
  * Phpmodbus Copyright (c) 2004, 2013 Jan Krakora
@@ -47,8 +48,8 @@ use Exception;
  */
 class ModbusMaster
 {
-    /** @var resource Communication socket */
-    private $sock;
+    /** @var Socket|false */
+    private Socket|false $sock;
 
     /** @var string Modbus device IP address */
     public string $host = "192.168.1.1";
@@ -170,7 +171,7 @@ class ModbusMaster
      *
      * Disconnect the socket
      */
-    private function disconnect()
+    private function disconnect(): void
     {
         socket_close($this->sock);
         $this->status .= "Disconnected" . PHP_EOL;
@@ -183,7 +184,7 @@ class ModbusMaster
      *
      * @param string $packet
      */
-    private function send(string $packet)
+    private function send(string $packet): void
     {
         socket_write($this->sock, $packet, strlen($packet));
         $this->status .= "Send" . PHP_EOL;
@@ -1274,7 +1275,7 @@ class ModbusMaster
         int $referenceWrite,
         array $data,
         array $dataTypes
-    ) {
+    ): bool|array {
         $this->status .= "readWriteRegisters: START" . PHP_EOL;
         // connect
         $this->connect();
@@ -1322,7 +1323,7 @@ class ModbusMaster
         int $referenceWrite,
         array $data,
         array $dataTypes
-    ) {
+    ): bool|array {
         return $this->readWriteRegisters($unitId, $referenceRead, $quantity, $referenceWrite, $data, $dataTypes);
     }
 
@@ -1396,7 +1397,7 @@ class ModbusMaster
      * @return array|false
      * @throws Exception
      */
-    private function readWriteRegistersParser(string $packet)
+    private function readWriteRegistersParser(string $packet): bool|array
     {
         $data = array();
         // if not exception
@@ -1449,7 +1450,7 @@ class ModbusMaster
      *
      * @param float $seconds seconds
      */
-    public function setTimeout(float $seconds)
+    public function setTimeout(float $seconds): void
     {
         $this->timeout_sec = $seconds;
     }
@@ -1461,7 +1462,7 @@ class ModbusMaster
      * @param float|null $write_timeout_sec data write timeout (seconds, default 1.0)
      * @internal param float $seconds seconds
      */
-    public function setSocketTimeout(?float $read_timeout_sec, ?float $write_timeout_sec)
+    public function setSocketTimeout(?float $read_timeout_sec, ?float $write_timeout_sec): void
     {
         // Set read timeout if given
         if ($read_timeout_sec !== null) {
