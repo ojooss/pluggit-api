@@ -22,7 +22,7 @@ class ModbusMasterMock extends ModbusMasterTcp
             $reference.'.mock';
         if (file_exists($mockFile)) {
             $json = file_get_contents($mockFile);
-            return json_decode($json);
+            return json_decode($json, null, 512, JSON_THROW_ON_ERROR);
         } else {
             throw new Exception('No mock data available for ' . $reference);
         }

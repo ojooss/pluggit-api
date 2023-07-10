@@ -8,76 +8,32 @@ use PluggitApi\PHPModbus\ModbusMasterTcp;
 abstract class Register
 {
 
-    const REGISTER_START_ADDRESS = 40001;
+    public const REGISTER_START_ADDRESS = 40001;
 
-    /**
-     * @var ModbusMasterTcp
-     */
-    protected ModbusMasterTcp $modbus;
-
-    /**
-     * @var int
-     */
     protected int $reference;
 
-    /**
-     * @var string
-     */
-    protected string $name;
-
-    /**
-     * @var string
-     */
-    protected string $description;
-
-    /**
-     * @var string
-     */
-    protected string $formatString;
-
-    /**
-     * @var mixed
-     */
     protected mixed $value = null;
 
-    /**
-     * @return mixed
-     */
     abstract protected function readValue(): mixed;
 
-    /**
-     * @param $value
-     * @return mixed
-     */
     abstract protected function formatValue($value): mixed;
 
     /**
-     * Register constructor.
-     * @param ModbusMasterTcp $modbus
-     * @param int $address
-     * @param string $name
-     * @param string $description
-     * @param string $formatString
      * @throws Exception
      */
     public function __construct(
-        ModbusMasterTcp $modbus,
-        int $address,
-        string $name,
-        string $description,
-        string $formatString = '%s'
+        protected ModbusMasterTcp $modbus,
+        protected int $address,
+        protected string $name,
+        protected string $description,
+        protected string $formatString = '%s'
     ) {
-        $this->modbus = $modbus;
         $this->reference = ($address - self::REGISTER_START_ADDRESS);
-        $this->name = $name;
-        $this->description = $description;
         $this->formatString = Translation::singleton()->translate($formatString);
     }
 
     /**
      * Used for test purpose
-     *
-     * @param ModbusMasterTcp $modbus
      */
     public function setModbus(ModbusMasterTcp $modbus): void
     {
@@ -85,11 +41,6 @@ abstract class Register
     }
 
 
-    /**
-     * @param bool $formatted
-     * @param bool $force
-     * @return mixed
-     */
     public function getValue(bool $formatted = false, bool $force = false): mixed
     {
         if (null === $this->value || $force) {
@@ -105,8 +56,6 @@ abstract class Register
 
     /**
      * By default, register is readonly
-     *
-     * @return bool
      */
     public function isWriteAble(): bool
     {

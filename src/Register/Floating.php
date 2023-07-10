@@ -10,11 +10,6 @@ class Floating extends Numeric
 {
 
     /**
-     * @var integer
-     */
-    protected int $decimals;
-
-    /**
      * Numeric constructor.
      * @param ModbusMasterTcp $modbus
      * @param int $address
@@ -30,10 +25,9 @@ class Floating extends Numeric
         string $name,
         string $description,
         string $formatString = '%s',
-        int $decimals = 0
+        protected int $decimals = 0
     ) {
         parent::__construct($modbus, $address, $name, $description, $formatString);
-        $this->decimals = $decimals;
     }
 
     /**

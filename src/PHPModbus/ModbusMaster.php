@@ -6,6 +6,7 @@ namespace PluggitApi\PHPModbus;
 
 use Exception;
 use Socket;
+use Stringable;
 
 /**
  * Phpmodbus Copyright (c) 2004, 2013 Jan Krakora
@@ -46,19 +47,16 @@ use Socket;
  * @package    Phpmodbus
  *
  */
-class ModbusMaster
+class ModbusMaster implements Stringable
 {
     /** @var Socket|false */
     private Socket|false $sock;
-
-    /** @var string Modbus device IP address */
-    public string $host = "192.168.1.1";
 
     /** @var int gateway port */
     public int $port = 502;
 
     /** @var string (optional) client IP address */
-    public string $client = ""; // TODO explanation?
+    public string $client = "";
 
     /** @var int client port */
     public int $client_port = 502;
@@ -76,10 +74,7 @@ class ModbusMaster
     public float $socket_write_timeout_sec = 1;
 
     /** @var int Endianness codding (0 = little endian = 0, 1 = big endian) */
-    public int $endianness = IecType::LITTLE_ENDIAN; //
-
-    /** @var string Socket protocol (TCP, UDP) */
-    public string $socket_protocol = "UDP";
+    public int $endianness = IecType::LITTLE_ENDIAN;
 
     /**
      * ModbusMaster
@@ -87,12 +82,12 @@ class ModbusMaster
      * This is the constructor that defines {@link $host} IP address of the object.
      *
      * @param String $host     An IP address of a Modbus TCP device. E.g. "192.168.1.1"
-     * @param String $protocol Socket protocol (TCP, UDP)
+     * @param String $socket_protocol Socket protocol (TCP, UDP)
      */
-    public function __construct(string $host, string $protocol)
-    {
-        $this->socket_protocol = $protocol;
-        $this->host = $host;
+    public function __construct(
+        public string $host,
+        public string $socket_protocol = "UDP"
+    ) {
     }
 
     /**
@@ -100,7 +95,7 @@ class ModbusMaster
      *
      * Magic method
      */
-    public function __toString()
+    public function __toString(): string
     {
         return "<pre>" . $this->status . "</pre>";
     }
@@ -108,7 +103,6 @@ class ModbusMaster
     /**
      * Convert float in seconds to array
      *
-     * @param float $secs
      * @return array {sec: ..., usec: ...}
      */
     private function secsToSecUsecArray(float $secs): array
@@ -200,6 +194,7 @@ class ModbusMaster
      */
     private function rec(): ?string
     {
+        $readsocks = [];
         socket_set_nonblock($this->sock);
         $readsocks[] = $this->sock;
         $writesocks = null;
@@ -251,7 +246,7 @@ class ModbusMaster
             // failure code
             $failure_code = ord($packet[8]);
             // failure code strings
-            $failures = array(
+            $failures = [
                 0x01 => "ILLEGAL FUNCTION",
                 0x02 => "ILLEGAL DATA ADDRESS",
                 0x03 => "ILLEGAL DATA VALUE",
@@ -261,7 +256,7 @@ class ModbusMaster
                 0x08 => "MEMORY PARITY ERROR",
                 0x0A => "GATEWAY PATH UNAVAILABLE",
                 0x0B => "GATEWAY TARGET DEVICE FAILED TO RESPOND",
-            );
+            ];
             // get failure string
             if (key_exists($failure_code, $failures)) {
                 $failure_str = $failures[$failure_code];
@@ -337,6 +332,7 @@ class ModbusMaster
      * @param int $reference
      * @param int $quantity
      * @return string
+     * @throws Exception
      */
     private function readCoilsPacketBuilder(int $unitId, int $reference, int $quantity): string
     {
@@ -350,7 +346,7 @@ class ModbusMaster
         $buffer2 .= IecType::iecINT($quantity);       // quantity
         $dataLen += 5;
         // build header
-        $buffer3 = IecType::iecINT(rand(0, 65000));   // transaction ID
+        $buffer3 = IecType::iecINT(random_int(0, 65000));   // transaction ID
         $buffer3 .= IecType::iecINT(0);               // protocol ID
         $buffer3 .= IecType::iecINT($dataLen + 1);    // lenght
         $buffer3 .= IecType::iecBYTE($unitId);        //unit ID
@@ -370,7 +366,7 @@ class ModbusMaster
      */
     private function readCoilsParser(string $packet, int $quantity): array
     {
-        $data = array();
+        $data = [];
         // check Response code
         $this->responseCode($packet);
         // get data from stream
@@ -378,7 +374,7 @@ class ModbusMaster
             $data[$i] = ord($packet[9 + $i]);
         }
         // get bool values to array
-        $data_boolean_array = array();
+        $data_boolean_array = [];
         $di = 0;
         foreach ($data as $value) {
             for ($i = 0; $i < 8; $i++) {
@@ -460,6 +456,8 @@ class ModbusMaster
      * @param int $reference
      * @param int $quantity
      * @return string
+     * @throws Exception
+     * @throws Exception
      */
     private function readInputDiscretesPacketBuilder(int $unitId, int $reference, int $quantity): string
     {
@@ -473,7 +471,7 @@ class ModbusMaster
         $buffer2 .= IecType::iecINT($quantity);       // quantity
         $dataLen += 5;
         // build header
-        $buffer3 = IecType::iecINT(rand(0, 65000));   // transaction ID
+        $buffer3 = IecType::iecINT(random_int(0, 65000));   // transaction ID
         $buffer3 .= IecType::iecINT(0);               // protocol ID
         $buffer3 .= IecType::iecINT($dataLen + 1);    // lenght
         $buffer3 .= IecType::iecBYTE($unitId);        //unit ID
@@ -559,6 +557,8 @@ class ModbusMaster
      * @param int $reference
      * @param int $quantity
      * @return string
+     * @throws Exception
+     * @throws Exception
      */
     private function readMultipleRegistersPacketBuilder(int $unitId, int $reference, int $quantity): string
     {
@@ -572,7 +572,7 @@ class ModbusMaster
         $buffer2 .= IecType::iecINT($quantity);       // quantity
         $dataLen += 5;
         // build header
-        $buffer3 = IecType::iecINT(rand(0, 65000));   // transaction ID
+        $buffer3 = IecType::iecINT(random_int(0, 65000));   // transaction ID
         $buffer3 .= IecType::iecINT(0);               // protocol ID
         $buffer3 .= IecType::iecINT($dataLen + 1);    // lenght
         $buffer3 .= IecType::iecBYTE($unitId);        //unit ID
@@ -591,7 +591,7 @@ class ModbusMaster
      */
     private function readMultipleRegistersParser(string $packet): array
     {
-        $data = array();
+        $data = [];
         // check Response code
         $this->responseCode($packet);
         // get data
@@ -663,6 +663,8 @@ class ModbusMaster
      * @param int $reference
      * @param int $quantity
      * @return string
+     * @throws Exception
+     * @throws Exception
      */
     private function readMultipleInputRegistersPacketBuilder(int $unitId, int $reference, int $quantity): string
     {
@@ -676,7 +678,7 @@ class ModbusMaster
         $buffer2 .= IecType::iecINT($quantity);                                         // quantity
         $dataLen += 5;
         // build header
-        $buffer3 = IecType::iecINT(rand(0, 65000));                                     // transaction ID
+        $buffer3 = IecType::iecINT(random_int(0, 65000));                                     // transaction ID
         $buffer3 .= IecType::iecINT(0);                                                 // protocol ID
         $buffer3 .= IecType::iecINT($dataLen + 1);                                      // lenght
         $buffer3 .= IecType::iecBYTE($unitId);                                          // unit ID
@@ -695,7 +697,7 @@ class ModbusMaster
      */
     private function readMultipleInputRegistersParser(string $packet): array
     {
-        $data = array();
+        $data = [];
         // check Response code
         $this->responseCode($packet);
         // get data
@@ -762,10 +764,12 @@ class ModbusMaster
      *
      * Packet builder FC5 - WRITE single register
      *
-     * @param int   $unitId
-     * @param int   $reference
+     * @param int $unitId
+     * @param int $reference
      * @param array $data
      * @return string
+     * @throws Exception
+     * @throws Exception
      */
     private function writeSingleCoilPacketBuilder(int $unitId, int $reference, array $data): string
     {
@@ -785,7 +789,7 @@ class ModbusMaster
         $buffer2 .= IecType::iecINT($reference);      // refnumber = 12288
         $dataLen += 3;
         // build header
-        $buffer3 = IecType::iecINT(rand(0, 65000));   // transaction ID
+        $buffer3 = IecType::iecINT(random_int(0, 65000));   // transaction ID
         $buffer3 .= IecType::iecINT(0);               // protocol ID
         $buffer3 .= IecType::iecINT($dataLen + 1);    // lenght
         $buffer3 .= IecType::iecBYTE($unitId);        //unit ID
@@ -865,10 +869,12 @@ class ModbusMaster
      *
      * Packet builder FC6 - WRITE single register
      *
-     * @param int   $unitId
-     * @param int   $reference
+     * @param int $unitId
+     * @param int $reference
      * @param array $data
      * @return string
+     * @throws Exception
+     * @throws Exception
      */
     private function writeSingleRegisterPacketBuilder(int $unitId, int $reference, array $data): string
     {
@@ -885,7 +891,7 @@ class ModbusMaster
         $buffer2 .= IecType::iecINT($reference);      // refnumber = 12288
         $dataLen += 3;
         // build header
-        $buffer3 = IecType::iecINT(rand(0, 65000));   // transaction ID
+        $buffer3 = IecType::iecINT(random_int(0, 65000));   // transaction ID
         $buffer3 .= IecType::iecINT(0);               // protocol ID
         $buffer3 .= IecType::iecINT($dataLen + 1);    // lenght
         $buffer3 .= IecType::iecBYTE($unitId);        //unit ID
@@ -963,16 +969,18 @@ class ModbusMaster
      *
      * Packet builder FC15 - Write multiple coils
      *
-     * @param int   $unitId
-     * @param int   $reference
+     * @param int $unitId
+     * @param int $reference
      * @param array $data
      * @return string
+     * @throws Exception
+     * @throws Exception
      */
     private function writeMultipleCoilsPacketBuilder(int $unitId, int $reference, array $data): string
     {
         $dataLen = 0;
         // build bool stream to the WORD array
-        $data_word_stream = array();
+        $data_word_stream = [];
         $data_word = 0;
         $shift = 0;
         for ($i = 0; $i < count($data); $i++) {
@@ -1002,7 +1010,7 @@ class ModbusMaster
         $buffer2 .= IecType::iecBYTE((count($data) + 7) / 8);       // byte count
         $dataLen += 6;
         // build header
-        $buffer3 = IecType::iecINT(rand(0, 65000));   // transaction ID
+        $buffer3 = IecType::iecINT(random_int(0, 65000));   // transaction ID
         $buffer3 .= IecType::iecINT(0);               // protocol ID
         $buffer3 .= IecType::iecINT($dataLen + 1);    // lenght
         $buffer3 .= IecType::iecBYTE($unitId);        // unit ID
@@ -1124,7 +1132,7 @@ class ModbusMaster
         $buffer2 .= IecType::iecBYTE($dataLen);     // byte count
         $dataLen += 6;
         // build header
-        $buffer3 = IecType::iecINT(rand(0, 65000));   // transaction ID
+        $buffer3 = IecType::iecINT(random_int(0, 65000));   // transaction ID
         $buffer3 .= IecType::iecINT(0);               // protocol ID
         $buffer3 .= IecType::iecINT($dataLen + 1);    // lenght
         $buffer3 .= IecType::iecBYTE($unitId);        //unit ID
@@ -1212,6 +1220,8 @@ class ModbusMaster
      * @param int $andMask
      * @param int $orMask
      * @return string
+     * @throws Exception
+     * @throws Exception
      */
     private function maskWriteRegisterPacketBuilder(int $unitId, int $reference, int $andMask, int $orMask): string
     {
@@ -1225,7 +1235,7 @@ class ModbusMaster
         $buffer2 .= IecType::iecINT($orMask);          // OR mask
         $dataLen += 7;
         // build header
-        $buffer3 = IecType::iecINT(rand(0, 65000));   // transaction ID
+        $buffer3 = IecType::iecINT(random_int(0, 65000));   // transaction ID
         $buffer3 .= IecType::iecINT(0);               // protocol ID
         $buffer3 .= IecType::iecINT($dataLen + 1);    // lenght
         $buffer3 .= IecType::iecBYTE($unitId);        //unit ID
@@ -1379,7 +1389,7 @@ class ModbusMaster
         $buffer2 .= IecType::iecBYTE($dataLen);       // byte count
         $dataLen += 10;
         // build header
-        $buffer3 = IecType::iecINT(rand(0, 65000));   // transaction ID
+        $buffer3 = IecType::iecINT(random_int(0, 65000));   // transaction ID
         $buffer3 .= IecType::iecINT(0);               // protocol ID
         $buffer3 .= IecType::iecINT($dataLen + 1);    // lenght
         $buffer3 .= IecType::iecBYTE($unitId);        //unit ID
@@ -1399,7 +1409,7 @@ class ModbusMaster
      */
     private function readWriteRegistersParser(string $packet): bool|array
     {
-        $data = array();
+        $data = [];
         // if not exception
         if (!$this->responseCode($packet)) {
             return false;

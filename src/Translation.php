@@ -34,7 +34,6 @@ class Translation
 
     /**
      * Translation constructor.
-     * @param string $lang
      * @throws Exception
      */
     private function __construct(string $lang = 'en')
@@ -47,7 +46,6 @@ class Translation
     }
 
     /**
-     * @param string $lang
      * @return Translation
      * @throws Exception
      */

@@ -183,9 +183,6 @@ class VentilationUnit
     }
 
     /**
-     * @param string $function
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     protected function getValueByFunction(string $function, bool $formatted = false, bool $force = false): mixed
@@ -196,10 +193,7 @@ class VentilationUnit
 
 
     /************************* GETTER SECTION ************************/
-
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getCurrentDateTime(bool $formatted = false, bool $force = false): mixed
@@ -208,8 +202,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getStartExploitationDate(bool $formatted = false, bool $force = false): mixed
@@ -218,8 +210,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getWorkTime(bool $formatted = false, bool $force = false): mixed
@@ -228,8 +218,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getOutdoorTemperature(bool $formatted = false, bool $force = false): mixed
@@ -238,8 +226,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getSupplyTemperature(bool $formatted = false, bool $force = false): mixed
@@ -248,8 +234,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getExtractTemperature(bool $formatted = false, bool $force = false): mixed
@@ -258,8 +242,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getExhaustTemperature(bool $formatted = false, bool $force = false): mixed
@@ -268,8 +250,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getFanSpeed1(bool $formatted = false, bool $force = false): mixed
@@ -278,8 +258,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getFanSpeed2(bool $formatted = false, bool $force = false): mixed
@@ -288,8 +266,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getFanSpeedLevel(bool $formatted = false, bool $force = false): mixed
@@ -298,8 +274,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getFilterDefaultTime(bool $formatted = false, bool $force = false): mixed
@@ -308,8 +282,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getFilterRemainingTime(bool $formatted = false, bool $force = false): mixed
@@ -318,8 +290,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getBypassTemperatureMin(bool $formatted = false, bool $force = false): mixed
@@ -328,8 +298,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getBypassTemperatureMax(bool $formatted = false, bool $force = false): mixed
@@ -338,8 +306,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getBypassManualTimeout(bool $formatted = false, bool $force = false): mixed
@@ -348,8 +314,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getBypassState(bool $formatted = false, bool $force = false): mixed
@@ -358,8 +322,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getUnitMode(bool $formatted = false, bool $force = false): mixed
@@ -368,8 +330,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getPreheaterDutyCycle(bool $formatted = false, bool $force = false): mixed
@@ -378,8 +338,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getCurrentBLState(bool $formatted = false, bool $force = false): mixed
@@ -388,8 +346,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getWeekProgram(bool $formatted = false, bool $force = false): mixed
@@ -398,8 +354,6 @@ class VentilationUnit
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $force
      * @return mixed
      */
     public function getAlarm(bool $formatted = false, bool $force = false): mixed
