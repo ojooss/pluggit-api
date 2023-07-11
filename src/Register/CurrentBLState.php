@@ -15,7 +15,7 @@ class CurrentBLState extends Numeric
      */
     protected function formatValue($value): string
     {
-        return match ($value) {
+        return match ((int)$value) {
             0 => Translation::singleton()->translate('current-bl-state-standby'),
             1 => Translation::singleton()->translate('current-bl-state-manual'),
             2 => Translation::singleton()->translate('current-bl-state-demand'),

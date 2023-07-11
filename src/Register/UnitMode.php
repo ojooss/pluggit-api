@@ -15,7 +15,7 @@ class UnitMode extends Numeric
      */
     protected function formatValue($value): string
     {
-        return match ($value) {
+        return match ((int)$value) {
             2 => Translation::singleton()->translate('unit-mode-demand'),
             4 => Translation::singleton()->translate('unit-mode-manual'),
             8 => Translation::singleton()->translate('unit-mode-program'),

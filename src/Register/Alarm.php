@@ -15,7 +15,7 @@ class Alarm extends Numeric
      */
     protected function formatValue($value): string
     {
-        return match ($value) {
+        return match ((int)$value) {
             0 => Translation::singleton()->translate('alarm-0'),
             1 => Translation::singleton()->translate('alarm-1'),
             2 => Translation::singleton()->translate('alarm-2'),

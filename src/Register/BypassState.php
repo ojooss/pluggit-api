@@ -15,7 +15,7 @@ class BypassState extends Numeric
      */
     protected function formatValue($value): string
     {
-        return match ($value) {
+        return match ((int)$value) {
             0 => Translation::singleton()->translate('bypass-stats-closed'),
             1 => Translation::singleton()->translate('bypass-stats-in-process'),
             32 => Translation::singleton()->translate('bypass-stats-closing'),
