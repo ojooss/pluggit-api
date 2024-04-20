@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PluggitApi\Tests;
 
 use Exception;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use PluggitApi\Tests\Helper\ModbusMasterMock;
 use PluggitApi\Translation;
@@ -48,11 +49,11 @@ final class RegisterCurrentBLStateTest extends TestCase
     }
 
     /**
-     * @dataProvider provider
      * @param $state
      * @param $expected
      * @throws Exception
      */
+    #[DataProvider('provider')]
     public function testGetValue($state, $expected): void
     {
         $modbus = new ModbusMasterMock('127.0.0.1');

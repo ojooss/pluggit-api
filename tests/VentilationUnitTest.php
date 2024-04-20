@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PluggitApi\Tests;
 
 use Exception;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use PluggitApi\Tests\Helper\VentilationUnitHelper;
 use PluggitApi\Translation;
@@ -51,9 +52,7 @@ final class VentilationUnitTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider provider
-     */
+    #[DataProvider('provider')]
     public function testRegisterGetter($getterName, $expectedRaw, $expectedFormated):void
     {
         $ventilationUnit = new VentilationUnitHelper('127.0.0.1');
