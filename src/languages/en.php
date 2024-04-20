@@ -73,5 +73,3 @@ return [
     'week-program-failed-set-value' => 'set value for week program failed: expected %s actual %s',
 ];
 // missing translation:    'Test item' => 'Test item',
-// missing translation:    'Test item' => 'Test item',
-// missing translation:    'Test item' => 'Test item',

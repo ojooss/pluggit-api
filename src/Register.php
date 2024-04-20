@@ -53,11 +53,6 @@ abstract class Register
 
     /**
      * Register constructor.
-     * @param ModbusMasterTcp $modbus
-     * @param int $address
-     * @param string $name
-     * @param string $description
-     * @param string $formatString
      * @throws Exception
      */
     public function __construct(
@@ -76,8 +71,6 @@ abstract class Register
 
     /**
      * Used for test purpose
-     *
-     * @param ModbusMasterTcp $modbus
      */
     public function setModbus(ModbusMasterTcp $modbus): void
     {
@@ -85,11 +78,6 @@ abstract class Register
     }
 
 
-    /**
-     * @param bool $formatted
-     * @param bool $force
-     * @return mixed
-     */
     public function getValue(bool $formatted = false, bool $force = false): mixed
     {
         if (null === $this->value || $force) {

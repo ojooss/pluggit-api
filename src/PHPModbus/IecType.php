@@ -124,9 +124,6 @@ class IecType
      * Make endianess as required.
      * For more see http://en.wikipedia.org/wiki/Endianness
      *
-     * @param int $value
-     * @param int $endianness
-     * @return string
      * @throws Exception
      */
     private static function endianness(int $value, int $endianness = self::LITTLE_ENDIAN): string

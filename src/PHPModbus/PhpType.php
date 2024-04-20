@@ -38,9 +38,6 @@ class PhpType
      * The function converts array of 4 bytes to float. The return value
      * depends on order of the input bytes (endianning).
      *
-     * @param array $values
-     * @param int $endianness
-     * @return float
      * @throws Exception
      */
     public static function bytes2float(array $values, int $endianness = IecType::LITTLE_ENDIAN): float
@@ -59,9 +56,6 @@ class PhpType
      * The function converts array of 2 or 4 bytes to signed integer.
      * The return value depends on order of the input bytes (endianning).
      *
-     * @param array $values
-     * @param int $endianness
-     * @return int
      * @throws Exception
      */
     public static function bytes2signedInt(array $values, int $endianness = IecType::LITTLE_ENDIAN): int
@@ -84,9 +78,6 @@ class PhpType
      * The function converts array of 2 or 4 bytes to unsigned integer.
      * The return value depends on order of the input bytes (endianning).
      *
-     * @param array $values
-     * @param int $endianness
-     * @return int|float
      * @throws Exception
      */
     public static function bytes2unsignedInt(array $values, int $endianness = IecType::LITTLE_ENDIAN): float|int
@@ -105,9 +96,6 @@ class PhpType
      * The function converts an values array to the string. The function detects
      * the end of the string by 0x00 character as defined by string standards.
      *
-     * @param array $values
-     * @param int $endianness
-     * @return string
      */
     public static function bytes2string(array $values, int $endianness = IecType::LITTLE_ENDIAN): string
     {
@@ -171,8 +159,6 @@ class PhpType
      *
      * Switch double word to signed integer
      *
-     * @param int $value
-     * @return int
      */
     private static function dword2signedInt(int $value): int
     {
@@ -188,8 +174,6 @@ class PhpType
      *
      * Switch double word to unsigned integer
      *
-     * @param int $value
-     * @return int
      */
     private static function dword2unsignedInt(int $value): int
     {
@@ -240,9 +224,6 @@ class PhpType
      *
      * Combine bytes together
      *
-     * @param array $data
-     * @param int $endianness
-     * @return int
      */
     private static function combineBytes(array $data, int $endianness): int
     {
