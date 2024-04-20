@@ -8,7 +8,7 @@ use PluggitApi\PHPModbus\ModbusMasterTcp;
 abstract class Register
 {
 
-    const REGISTER_START_ADDRESS = 40001;
+    public const REGISTER_START_ADDRESS = 40001;
 
     /**
      * @var ModbusMasterTcp

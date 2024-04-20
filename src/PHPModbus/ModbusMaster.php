@@ -58,7 +58,7 @@ class ModbusMaster implements Stringable
     public int $port = 502;
 
     /** @var string (optional) client IP address */
-    public string $client = ""; // TODO explanation?
+    public string $client = "";
 
     /** @var int client port */
     public int $client_port = 502;

@@ -46,6 +46,7 @@ echo "Alarm: ".$ventilationUnit->getAlarm(true).' ('.$ventilationUnit->getAlarm(
 
 echo PHP_EOL;
 
+try {
 $oldValue = $ventilationUnit->getFanSpeedLevel(false);
 $ventilationUnit->setFanSpeedLevel(1);
 echo "Set FanSpeedLevel to: ".$ventilationUnit->getFanSpeedLevel(true).PHP_EOL;
@@ -69,5 +70,10 @@ $ventilationUnit->setWeekProgram(5);
 echo "Set WeekProgram to: ".$ventilationUnit->getWeekProgram(true).PHP_EOL;
 $ventilationUnit->setWeekProgram($oldValue);
 echo "Reset WeekProgram to: ".$ventilationUnit->getWeekProgram(true).PHP_EOL;
+
+} catch (Exception $e) {
+    echo PHP_EOL .
+        'FATAL ERROR: ' . $e->getMessage() . PHP_EOL;
+}
 
 echo PHP_EOL;
