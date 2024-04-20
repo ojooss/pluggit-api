@@ -24,7 +24,7 @@ final class RegisterUnitModeTest extends TestCase
     /**
      * @return array
      */
-    public function provider(): array
+    public static function provider(): array
     {
         return [
             [2, 'demand'],

@@ -5,3 +5,4 @@ src/languages/test.php
 test.php
 tests/coverage/
 vendor/
+.phpunit.result.cache

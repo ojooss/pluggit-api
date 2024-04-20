@@ -24,7 +24,7 @@ final class VentilationUnitTest extends TestCase
     /**
      * @return array
      */
-    public function provider(): array
+    public static function provider(): array
     {
         return [
             ['getCurrentDateTime', 1570052849, '10/02/2019 21:47:29'],
@@ -70,7 +70,7 @@ final class VentilationUnitTest extends TestCase
         $methods = get_class_methods(VentilationUnit::class);
 
         # get function name out of dataProvider
-        $provider = $this->provider();
+        $provider = VentilationUnitTest::provider();
         $providerGetter = [];
         foreach ($provider as $item) {
             $providerGetter[] = $item[0];

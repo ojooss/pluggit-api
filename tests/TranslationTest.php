@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PluggitApi\Tests;
 
 use Exception;
+use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 use PHPUnit\Framework\TestCase;
 use PluggitApi\Translation;
 
@@ -29,27 +30,27 @@ final class TranslationTest extends TestCase
     }
 
     /**
-     * @runInSeparateProcess
      * @throws Exception
      */
+    #[RunInSeparateProcess]
     public function testSingleton():void
     {
         self::assertEquals(Translation::singleton('test'), Translation::singleton('TEST'));
     }
 
     /**
-     * @runInSeparateProcess
      * @throws Exception
      */
+    #[RunInSeparateProcess]
     public function testTranslateText():void
     {
         self::assertEquals('Testcase result', Translation::singleton('test')->translate('testcase'));
     }
 
     /**
-     * @runInSeparateProcess
      * @throws Exception
      */
+    #[RunInSeparateProcess]
     public function testMissingTranslation():void
     {
         self::assertEquals(__METHOD__, Translation::singleton('test')->translate(__METHOD__));
@@ -57,9 +58,9 @@ final class TranslationTest extends TestCase
     }
 
     /**
-     * @runInSeparateProcess
      * @throws Exception
      */
+    #[RunInSeparateProcess]
     public function testInitialization():void
     {
         try {
