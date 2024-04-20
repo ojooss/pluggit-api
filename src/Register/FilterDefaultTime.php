@@ -22,7 +22,7 @@ class FilterDefaultTime extends Numeric
      * @param $value
      * @throws Exception
      */
-    public function writeValue($value)
+    public function writeValue($value): void
     {
         //validate
         if ($value < 0) {

@@ -38,18 +38,18 @@ abstract class Register
     /**
      * @var mixed
      */
-    protected $value;
+    protected mixed $value = null;
 
     /**
      * @return mixed
      */
-    abstract protected function readValue();
+    abstract protected function readValue(): mixed;
 
     /**
      * @param $value
      * @return mixed
      */
-    abstract protected function formatValue($value);
+    abstract protected function formatValue($value): mixed;
 
     /**
      * Register constructor.
@@ -79,7 +79,7 @@ abstract class Register
      *
      * @param ModbusMasterTcp $modbus
      */
-    public function setModbus(ModbusMasterTcp $modbus)
+    public function setModbus(ModbusMasterTcp $modbus): void
     {
         $this->modbus = $modbus;
     }
@@ -90,7 +90,7 @@ abstract class Register
      * @param bool $force
      * @return mixed
      */
-    public function getValue(bool $formatted = false, bool $force = false)
+    public function getValue(bool $formatted = false, bool $force = false): mixed
     {
         if (null === $this->value || $force) {
             $this->value = $this->readValue();

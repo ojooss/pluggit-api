@@ -9,7 +9,7 @@ class RegisterAlarmHelper extends Alarm
     /**
      * @param $value
      */
-    public function setValue($value)
+    public function setValue($value): void
     {
         $this->value = $value;
     }

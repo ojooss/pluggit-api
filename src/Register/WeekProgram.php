@@ -22,7 +22,7 @@ class WeekProgram extends Numeric
      * @param $value
      * @throws Exception
      */
-    public function writeValue($value)
+    public function writeValue($value): void
     {
         //validate
         if ($value   < 0 || $value > 10) {

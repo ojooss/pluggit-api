@@ -7,6 +7,7 @@ use Exception;
 use PHPUnit\Framework\TestCase;
 use PluggitApi\Tests\Helper\ModbusMasterMock;
 use PluggitApi\Tests\Helper\RegisterHelper;
+use PluggitApi\Translation;
 
 final class RegisterTest extends TestCase
 {
@@ -15,6 +16,7 @@ final class RegisterTest extends TestCase
      */
     public function testGetValue(): void
     {
+        Translation::singleton('en');
         $modbusMaster = new ModbusMasterMock('127.0.0.1');
         $register = new RegisterHelper($modbusMaster, 9999, '123', 'Test', 'Test item');
 

@@ -188,7 +188,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    protected function getValueByFunction(string $function, bool $formatted = false, bool $force = false)
+    protected function getValueByFunction(string $function, bool $formatted = false, bool $force = false): mixed
     {
         $index = str_replace('get', '', $function);
         return $this->register[$index]->getValue($formatted, $force);
@@ -202,7 +202,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getCurrentDateTime(bool $formatted = false, bool $force = false)
+    public function getCurrentDateTime(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -212,7 +212,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getStartExploitationDate(bool $formatted = false, bool $force = false)
+    public function getStartExploitationDate(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -222,7 +222,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getWorkTime(bool $formatted = false, bool $force = false)
+    public function getWorkTime(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -232,7 +232,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getOutdoorTemperature(bool $formatted = false, bool $force = false)
+    public function getOutdoorTemperature(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -242,7 +242,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getSupplyTemperature(bool $formatted = false, bool $force = false)
+    public function getSupplyTemperature(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -252,7 +252,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getExtractTemperature(bool $formatted = false, bool $force = false)
+    public function getExtractTemperature(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -262,7 +262,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getExhaustTemperature(bool $formatted = false, bool $force = false)
+    public function getExhaustTemperature(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -272,7 +272,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getFanSpeed1(bool $formatted = false, bool $force = false)
+    public function getFanSpeed1(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -282,7 +282,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getFanSpeed2(bool $formatted = false, bool $force = false)
+    public function getFanSpeed2(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -292,7 +292,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getFanSpeedLevel(bool $formatted = false, bool $force = false)
+    public function getFanSpeedLevel(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -302,7 +302,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getFilterDefaultTime(bool $formatted = false, bool $force = false)
+    public function getFilterDefaultTime(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -312,7 +312,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getFilterRemainingTime(bool $formatted = false, bool $force = false)
+    public function getFilterRemainingTime(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -322,7 +322,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getBypassTemperatureMin(bool $formatted = false, bool $force = false)
+    public function getBypassTemperatureMin(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -332,7 +332,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getBypassTemperatureMax(bool $formatted = false, bool $force = false)
+    public function getBypassTemperatureMax(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -342,7 +342,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getBypassManualTimeout(bool $formatted = false, bool $force = false)
+    public function getBypassManualTimeout(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -352,7 +352,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getBypassState(bool $formatted = false, bool $force = false)
+    public function getBypassState(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -362,7 +362,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getUnitMode(bool $formatted = false, bool $force = false)
+    public function getUnitMode(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -372,7 +372,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getPreheaterDutyCycle(bool $formatted = false, bool $force = false)
+    public function getPreheaterDutyCycle(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -382,7 +382,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getCurrentBLState(bool $formatted = false, bool $force = false)
+    public function getCurrentBLState(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -392,7 +392,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getWeekProgram(bool $formatted = false, bool $force = false)
+    public function getWeekProgram(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -402,7 +402,7 @@ class VentilationUnit
      * @param bool $force
      * @return mixed
      */
-    public function getAlarm(bool $formatted = false, bool $force = false)
+    public function getAlarm(bool $formatted = false, bool $force = false): mixed
     {
         return $this->getValueByFunction(__FUNCTION__, $formatted, $force);
     }
@@ -415,7 +415,7 @@ class VentilationUnit
      * @return void
      * @throws Exception
      */
-    public function setUnitMode($value)
+    public function setUnitMode($value): void
     {
         /** @var UnitMode $register */
         $register = $this->register['UnitMode'];
@@ -427,7 +427,7 @@ class VentilationUnit
      * @return void
      * @throws Exception
      */
-    public function setFanSpeedLevel($value)
+    public function setFanSpeedLevel($value): void
     {
         /** @var FanSpeedLevel $register */
         $register = $this->register['FanSpeedLevel'];
@@ -439,7 +439,7 @@ class VentilationUnit
      * @return void
      * @throws Exception
      */
-    public function setFilterDefaultTime($value)
+    public function setFilterDefaultTime($value): void
     {
         /** @var FilterDefaultTime $register */
         $register = $this->register['FilterDefaultTime'];
@@ -451,7 +451,7 @@ class VentilationUnit
      * @return void
      * @throws Exception
      */
-    public function setWeekProgram($value)
+    public function setWeekProgram($value): void
     {
         /** @var WeekProgram $register */
         $register = $this->register['WeekProgram'];

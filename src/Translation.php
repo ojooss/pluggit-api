@@ -69,9 +69,9 @@ class Translation
 
     /**
      * @param $key
-     * @return mixed
+     * @return string
      */
-    public function translate($key)
+    public function translate($key): string
     {
         if (isset($this->dictionary[$key])) {
             return $this->dictionary[$key];

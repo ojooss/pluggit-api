@@ -58,7 +58,7 @@ class UnitMode extends Numeric
      * @param $value
      * @throws Exception
      */
-    public function writeValue($value)
+    public function writeValue($value): void
     {
 
         switch ($value) {
