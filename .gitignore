@@ -1,6 +1,6 @@
 .idea/
 .phpunit.cache/
-composer.phar
+composer.lock
 src/languages/test.php
 test.php
 tests/coverage/

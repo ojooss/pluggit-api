@@ -1,5 +1,3 @@
-version: '3'
-
 services:
 
   test:
@@ -19,12 +17,14 @@ services:
     command: bash -c "composer install  &&  php sample.php"
 
   dev:
+    build:
+      context: .
     image: pluggit-api:local
     environment:
       PLUGGIT_IP: "${PLUGGIT_IP}"
     volumes:
       - .:/app
-    # run interactive bash shell
+    # run an interactive bash shell
     command: bash
     tty: true
     stdin_open: true

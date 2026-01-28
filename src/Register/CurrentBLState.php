@@ -13,6 +13,7 @@ class CurrentBLState extends Numeric
      * @return string
      * @throws Exception
      */
+    #[\Override]
     protected function formatValue($value): string
     {
         return match ((int)$value) {

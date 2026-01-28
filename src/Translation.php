@@ -30,7 +30,7 @@ class Translation
      *
      * @var string
      */
-    private string $languageFile;
+    private readonly string $languageFile;
 
     /**
      * Translation constructor.

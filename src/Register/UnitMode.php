@@ -13,6 +13,7 @@ class UnitMode extends Numeric
      * @return string
      * @throws Exception
      */
+    #[\Override]
     protected function formatValue($value): string
     {
         return match ((int)$value) {
@@ -37,6 +38,7 @@ class UnitMode extends Numeric
      *
      * @return bool
      */
+    #[\Override]
     public function isWriteAble(): bool
     {
         return true;

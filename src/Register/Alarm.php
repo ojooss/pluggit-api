@@ -13,6 +13,7 @@ class Alarm extends Numeric
      * @return string
      * @throws Exception
      */
+    #[\Override]
     protected function formatValue($value): string
     {
         return match ((int)$value) {
@@ -42,6 +43,7 @@ class Alarm extends Numeric
      *
      * @return bool
      */
+    #[\Override]
     public function isWriteAble(): bool
     {
         return false;

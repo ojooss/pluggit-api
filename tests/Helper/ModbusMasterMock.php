@@ -14,6 +14,7 @@ class ModbusMasterMock extends ModbusMasterTcp
      * @return array
      * @throws Exception
      */
+    #[\Override]
     public function readMultipleRegisters(int $unitId, int $reference, int $quantity): array
     {
         $mockFile = __DIR__.DIRECTORY_SEPARATOR.
@@ -35,6 +36,7 @@ class ModbusMasterMock extends ModbusMasterTcp
      * @param array $dataTypes
      * @return bool
      */
+    #[\Override]
     public function writeMultipleRegister(int $unitId, int $reference, array $data, array $dataTypes): bool
     {
         return true;

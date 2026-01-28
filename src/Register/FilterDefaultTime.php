@@ -13,6 +13,7 @@ class FilterDefaultTime extends Numeric
      *
      * @return bool
      */
+    #[\Override]
     public function isWriteAble(): bool
     {
         return true;

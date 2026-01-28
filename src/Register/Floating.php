@@ -34,6 +34,7 @@ class Floating extends Numeric
      * @return float
      * @throws Exception
      */
+    #[\Override]
     protected function readValue(): float
     {
         $registerData = $this->modbus->readMultipleRegisters(0, $this->reference, 2);
@@ -45,6 +46,7 @@ class Floating extends Numeric
      * @param $value
      * @return string
      */
+    #[\Override]
     protected function formatValue($value): string
     {
         $locale = localeconv();

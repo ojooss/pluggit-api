@@ -5,6 +5,7 @@
 namespace PluggitApi\PHPModbus;
 
 use Exception;
+use Socket;
 use Stringable;
 
 /**
@@ -48,8 +49,8 @@ use Stringable;
  */
 class ModbusMaster implements Stringable
 {
-    /** @var resource Communication socket */
-    private $sock;
+    /** @var Socket Communication socket */
+    private Socket $sock;
 
     /** @var string Modbus device IP address */
     public string $host = "192.168.1.1";
